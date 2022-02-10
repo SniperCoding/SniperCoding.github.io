@@ -1214,7 +1214,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #df5caf;
+  background: #0f91ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2708,6 +2708,9 @@ body {
 @media (min-width: 768px) and (max-width: 991px) {
   .content-wrap {
     padding: 10px;
+  }
+  .posts-expand {
+    margin: 0;
   }
   .posts-expand .post-button {
     margin-top: 20px;
