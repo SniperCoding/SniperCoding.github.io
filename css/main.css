@@ -1,6 +1,6 @@
 .post-body a {
   color: #428bca;
-  font-weight: bold;
+  text-decoration: none;
 }
 :root {
   --body-bg-color: #eee;
@@ -1218,7 +1218,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #34c706;
+  background: #ff34fa;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
