@@ -1222,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #d5fb93;
+  background: #f988ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2296,6 +2296,13 @@ ul.breadcrumb li + li:last-child {
     width: auto;
   }
 }
+body {
+  background: url("/images/bg2.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 50% 50%;
+}
 .site-brand-container {
   background: #222;
 }
@@ -2576,13 +2583,6 @@ ul.breadcrumb li + li:last-child {
   .sub-menu + .content .post-block {
     margin-top: 8px;
   }
-}
-.post-body {
-  background: url("/images/bg2.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: 50% 50%;
 }
 .post-body h1,
 .post-body h2 {
