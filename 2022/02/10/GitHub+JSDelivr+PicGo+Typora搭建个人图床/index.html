@@ -20,30 +20,41 @@
     var CONFIG = {"hostname":"snipercoding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="请不要假装很努力，因为结果不会陪你演戏">
-<meta property="og:type" content="website">
+  <meta name="description" content="[toc] 0. 初衷 平时写文章，经常需要插入图片，免不了需要使用图床工具把本地图片转换成链接。市面上的图床工具非常多，但很多都需要收费，有些免费的也存在着不稳定的风险。而 GitHub 作为全球最大的“同性交友网站”，不仅稳定性高，而且简单易用，关键还可以免费白嫖！下面教大家如何更好地利用 GitHub 搭建图床。   1. 创建 GitHub 仓库注册&#x2F;登录自己的 GitHub，创">
+<meta property="og:type" content="article">
 <meta property="og:title" content="SniperCoding的个人博客">
-<meta property="og:url" content="https://snipercoding.github.io/index.html">
+<meta property="og:url" content="https://snipercoding.github.io/2022/02/10/GitHub+JSDelivr+PicGo+Typora%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A/index.html">
 <meta property="og:site_name" content="SniperCoding的个人博客">
-<meta property="og:description" content="请不要假装很努力，因为结果不会陪你演戏">
+<meta property="og:description" content="[toc] 0. 初衷 平时写文章，经常需要插入图片，免不了需要使用图床工具把本地图片转换成链接。市面上的图床工具非常多，但很多都需要收费，有些免费的也存在着不稳定的风险。而 GitHub 作为全球最大的“同性交友网站”，不仅稳定性高，而且简单易用，关键还可以免费白嫖！下面教大家如何更好地利用 GitHub 搭建图床。   1. 创建 GitHub 仓库注册&#x2F;登录自己的 GitHub，创">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221106.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221128.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221131.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221134.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221137.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221141.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221149.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221154.png">
+<meta property="article:published_time" content="2022-02-10T07:00:21.838Z">
+<meta property="article:modified_time" content="2022-02-08T14:11:57.449Z">
 <meta property="article:author" content="SniperCoding">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221106.png">
 
-<link rel="canonical" href="https://snipercoding.github.io/">
+<link rel="canonical" href="https://snipercoding.github.io/2022/02/10/GitHub+JSDelivr+PicGo+Typora%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>SniperCoding的个人博客</title>
+  <title> | SniperCoding的个人博客</title>
   
 
 
@@ -151,9 +162,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -169,10 +181,9 @@
       <meta itemprop="name" content="SniperCoding的个人博客">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+        <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/10/GitHub+JSDelivr+PicGo+Typora%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -202,7 +213,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>[toc]</p>
+        <p>[toc]</p>
 <h1 id="0-初衷"><a href="#0-初衷" class="headerlink" title="0. 初衷"></a>0. 初衷</h1><blockquote>
 <p>平时写文章，经常需要插入图片，免不了需要使用图床工具把本地图片转换成链接。市面上的图床工具非常多，但很多都需要收费，有些免费的也存在着不稳定的风险。而 GitHub 作为全球最大的“同性交友网站”，不仅稳定性高，而且简单易用，关键还可以免费白嫖！下面教大家如何更好地利用 GitHub 搭建图床。</p>
 </blockquote>
@@ -270,21 +281,40 @@
 </ul>
 <p>以上就是使用 <code>GitHub</code> + <code>jsDelivr</code> + <code>PicGo</code> + <code>TyPora</code> 搭建免费稳定图床的全过程，希望对你有所帮助！</p>
 
-      
     </div>
 
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>SniperCoding
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://snipercoding.github.io/2022/02/10/GitHub+JSDelivr+PicGo+Typora%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A/" title="">https://snipercoding.github.io/2022/02/10/GitHub+JSDelivr+PicGo+Typora搭建个人图床/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+
+        
+
+
+        
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -337,6 +367,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-%E5%88%9D%E8%A1%B7"><span class="nav-text">0. 初衷</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA-GitHub-%E4%BB%93%E5%BA%93"><span class="nav-text">1. 创建 GitHub 仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8-jsDelivr-%E8%BF%9B%E8%A1%8C-CDN-%E5%8A%A0%E9%80%9F"><span class="nav-text">2. 使用 jsDelivr 进行 CDN 加速</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8PicGo%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87"><span class="nav-text">3. 使用PicGo上传图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Typora-%E9%85%8D%E7%BD%AE-PicGo-%E4%B8%8A%E4%BC%A0"><span class="nav-text">4. Typora 配置 PicGo 上传</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
