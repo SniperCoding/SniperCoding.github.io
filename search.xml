@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>GitHub+JSDelivr+PicGo+Typora搭建个人图床</title>
+    <url>/2022/02/10/GitHub+JSDelivr+PicGo+Typora%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A/</url>
+    <content><![CDATA[<h1 id="0-初衷"><a href="#0-初衷" class="headerlink" title="0. 初衷"></a>0. 初衷</h1><blockquote>
+<p>平时写文章，经常需要插入图片，免不了需要使用图床工具把本地图片转换成链接。市面上的图床工具非常多，但很多都需要收费，有些免费的也存在着不稳定的风险。<span id="more"></span>而 GitHub 作为全球最大的“同性交友网站”，不仅稳定性高，而且简单易用，关键还可以免费白嫖！下面教大家如何更好地利用 GitHub 搭建图床。</p>
+</blockquote>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221106.png" alt="image-20220208202732428" style="zoom: 67%;" />
+
+<h1 id="1-创建-GitHub-仓库"><a href="#1-创建-GitHub-仓库" class="headerlink" title="1. 创建 GitHub 仓库"></a>1. 创建 GitHub 仓库</h1><p>注册&#x2F;登录自己的 GitHub，创建一个新的名字任意的<strong>公开</strong>仓库。然后上传图片到仓库中，这里我直接使用浏览器端上传的，也可以使用 Git 进行上传。</p>
+<ul>
+<li>在创建的仓库中点击<code>Upload files</code>。</li>
+</ul>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221128.png" alt="image-20210903190649347" style="zoom: 110%;" />
+
+<ul>
+<li><p>选择上传的图片，然后提交。</p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221131.png" alt="image-20220208204506190" style="zoom: 67%;" />
+</li>
+<li><p>提交之后，就可以在浏览器通过地址<code>https://raw.githubusercontent.com/你的用户名/你的仓库名/main/文件路径</code>来访问所上传的图片。</p>
+<p>比如：<em><a href="https://raw.githubusercontent.com/SniperCoding/pictures1/main/avatar.jpg">https://raw.githubusercontent.com/SniperCoding/pictures1/main/avatar.jpg</a></em></p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221134.png" alt="image-20220208210418418" style="zoom: 67%;" />
+</li>
+<li><p>之后在博客中插入图片的时候，使用此链接即可。</p>
+</li>
+</ul>
+<h1 id="2-使用-jsDelivr-进行-CDN-加速"><a href="#2-使用-jsDelivr-进行-CDN-加速" class="headerlink" title="2. 使用 jsDelivr 进行 CDN 加速"></a>2. 使用 jsDelivr 进行 CDN 加速</h1><p>前面已经利用 GitHub 仓库实现了图床功能，但是大家都知道，GitHub 在国内访问很慢，甚至经常打不开，那么我们的图片就存在加载速度慢的问题，怎么办呢？<strong>jsDelivr</strong> 可以解决此问题，显著提高图片访问的响应速度，并且开源免费！其官网为：<a href="https://www.jsdelivr.com/">jsDelivr - A free, fast, and reliable CDN for open source</a>。</p>
+<p>使用方法也非常的简单，直接在浏览器通过地址<code>https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名@发布的版本号/文件路径</code>就可以访问 GitHub 上的图片，并且响应速度非常快！其中@发布的版本号可以直接省略，默认加载最新版本，即直接可以简写为<code>https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名/文件路径</code></p>
+<p>比如：<em><a href="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/avatar.jpg">https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/avatar.jpg</a></em></p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221137.png" alt="image-20220208210418418" style="zoom: 67%;" />
+
+<h1 id="3-使用PicGo上传图片"><a href="#3-使用PicGo上传图片" class="headerlink" title="3. 使用PicGo上传图片"></a>3. 使用PicGo上传图片</h1><p>前面实现了 GitHub 仓库作为图床，jsDelivr 对图片进行加速。但是每次我们都需要使用 Git 工具或者在 GitHub 仓库中进行上传图片，并且要自己拼接图片地址，非常麻烦，有没有更快速更简洁的方式呢？此时神器 <strong>PicGo</strong> 就派上了用场，同样开源免费！</p>
+<p>PicGo 是一个用于快速上传图片并获取图片 URL 链接的工具，支持多个图床进行使用，其中当然包括我们现在使用的 GitHub 图床了，它同时支持 Windows、macOS、Linux平台，详情可见：<a href="https://github.com/Molunerfinn/PicGo">Molunerfinn&#x2F;PicGo: A simple &amp; beautiful tool for pictures uploading built by vue-cli-electron-builder (github.com)</a></p>
+<p>这里以 Windows 为例，说明 PicGo 的使用方法。</p>
+<ul>
+<li><p>下载并安装 PicGo，<a href="https://github.com/Molunerfinn/PicGo/releases/download/v2.2.2/PicGo-Setup-2.2.2.exe">https://github.com/Molunerfinn/PicGo/releases/download/v2.2.2/PicGo-Setup-2.2.2.exe</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221141.png" alt="image-20210903201908609"></p>
+</li>
+<li><p>打开 PicGo 软件，找到<code>图床设置</code>中的<code>GitHub图床</code>，填写相关信息。</p>
+<ul>
+<li><p><strong>设定仓库名【必填】</strong>：填写<code>你的用户名/你的仓库名</code>，比如我的 SniperCoding&#x2F;pictures1</p>
+</li>
+<li><p><strong>设定分支名【必填】</strong>：填写<code>main</code></p>
+</li>
+<li><p><strong>设定Token【必填】</strong>：在Github主页点击自己头像后，依次选择【Settings】-&gt;【Developer settings】-&gt;【Personal access tokens】-&gt;【Generate new token】，填写Note描述（随便），设置过期时间Expiration为永不过期No expiration，设定勾选【repo】，点击下方的【Generate token】生成一个Token，将Token复制到 PicGo 中。</p>
+</li>
+<li><p>指定存储路径【选填】：可不填。</p>
+</li>
+<li><p><strong>设定自定义域名【选填】</strong>：图片上传后，PicGo 会按照【自定义域名+上传的图片名】的方式生成访问链接，放到剪贴板上，因为我们要使用 jsDeliver 进行加速，因而这里设置为<code>https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名</code>，比如我设置为<strong><a href="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1">https://cdn.jsdelivr.net/gh/SniperCoding/pictures1</a></strong></p>
+</li>
+</ul>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221149.png" alt="image-20220208221048599" style="zoom: 67%;" />
+</li>
+<li><p>接着就可以在<code>上传区</code>，将自己的图片上传，甚至可以直接将剪切板的截图上传，上传成功后会直接将相应链接复制到剪切板中，我们就可以直接复制到博客（MarkDown 编辑器）中。</p>
+</li>
+<li><p>在<code>PicGo设置中</code>，可以自定义一些设置，比如上传前重命名、时间戳重命名等，自行设置。</p>
+</li>
+</ul>
+<h1 id="4-Typora-配置-PicGo-上传"><a href="#4-Typora-配置-PicGo-上传" class="headerlink" title="4. Typora 配置 PicGo 上传"></a>4. Typora 配置 PicGo 上传</h1><p>前面使用了 PicGo 工具快速上传图片并获取图片 URL 链接，方便了很多，但是每次都要先在 PicGo 中进行上传，然后将剪切板中链接复制到 MarkDown 编辑器中，有没有更优雅简便的方式，可以将两步合二为一呢？答案是<strong>Typera+PicGo</strong>。</p>
+<p>Typera 是一款轻便简洁的 Markdown 编辑器，可以即时渲染，并且完全免费，推荐大家用此软件进行写作，其官网为：<a href="https://www.typora.io/">Typora — a markdown editor, markdown reader.</a></p>
+<p>下面介绍 Typora 结合 PicGo 实现上传功能。</p>
+<ul>
+<li><p>下载 Typora，网址<a href="https://www.typora.io/#windows">Typora — a markdown editor, markdown reader.</a></p>
+</li>
+<li><p>打开 PicGo，在<code>PicGo设置</code>中，点击【设置 Server 】，将监听端口修改为：36677</p>
+</li>
+<li><p>打开 Typera，点击【文件】 -&gt; 【偏好设置】-&gt; 【图像】，然后进行如下配置，其中 PicGo 路径是你的 PicGo 的安装路径。</p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221154.png" style="zoom: 67%;" />
+
+
+</li>
+<li><p>在 Typera 中书写文章，插入图片（也可以直接将截图复制）时会自动将图片进行上传，并显示在文章中，非常的方便。</p>
+</li>
+</ul>
+<p>以上就是使用 <code>GitHub</code> + <code>jsDelivr</code> + <code>PicGo</code> + <code>TyPora</code> 搭建免费稳定图床的全过程，希望对你有所帮助！</p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>我的博客</title>
+    <url>/2022/02/10/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+</search>
