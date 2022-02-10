@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221149.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221154.png">
 <meta property="article:published_time" content="2022-02-10T06:52:38.000Z">
-<meta property="article:modified_time" content="2022-02-10T10:07:05.997Z">
+<meta property="article:modified_time" content="2022-02-10T10:51:08.729Z">
 <meta property="article:author" content="SniperCoding">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221106.png">
@@ -197,7 +197,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-02-10 14:52:38 / 修改时间：18:07:05" itemprop="dateCreated datePublished" datetime="2022-02-10T14:52:38+08:00">2022-02-10</time>
+              <time title="创建时间：2022-02-10 14:52:38 / 修改时间：18:51:08" itemprop="dateCreated datePublished" datetime="2022-02-10T14:52:38+08:00">2022-02-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,20 +244,21 @@
         <h1 id="0-初衷"><a href="#0-初衷" class="headerlink" title="0. 初衷"></a>0. 初衷</h1><blockquote>
 <p>平时写文章，经常需要插入图片，免不了需要使用图床工具把本地图片转换成链接。市面上的图床工具非常多，但很多都需要收费，有些免费的也存在着不稳定的风险。<span id="more"></span>而 GitHub 作为全球最大的“同性交友网站”，不仅稳定性高，而且简单易用，关键还可以免费白嫖！下面教大家如何更好地利用 GitHub 搭建图床。</p>
 </blockquote>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221106.png" alt="image-20220208202732428" style="zoom: 50%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221106.png" alt="image-20220208202732428" style="zoom: 67%;" />
 
 <h1 id="1-创建-GitHub-仓库"><a href="#1-创建-GitHub-仓库" class="headerlink" title="1. 创建 GitHub 仓库"></a>1. 创建 GitHub 仓库</h1><p>注册&#x2F;登录自己的 GitHub，创建一个新的名字任意的<strong>公开</strong>仓库。然后上传图片到仓库中，这里我直接使用浏览器端上传的，也可以使用 Git 进行上传。</p>
 <ul>
 <li>在创建的仓库中点击<code>Upload files</code>。</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221128.png" alt="image-20210903190649347"></p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221128.png" alt="image-20210903190649347" style="zoom: 110%;" />
+
 <ul>
 <li><p>选择上传的图片，然后提交。</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221131.png" alt="image-20220208204506190" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221131.png" alt="image-20220208204506190" style="zoom: 67%;" />
 </li>
 <li><p>提交之后，就可以在浏览器通过地址<code>https://raw.githubusercontent.com/你的用户名/你的仓库名/main/文件路径</code>来访问所上传的图片。</p>
 <p>比如：<em><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/SniperCoding/pictures1/main/avatar.jpg">https://raw.githubusercontent.com/SniperCoding/pictures1/main/avatar.jpg</a></em></p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221134.png" alt="image-20220208210418418" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221134.png" alt="image-20220208210418418" style="zoom: 67%;" />
 </li>
 <li><p>之后在博客中插入图片的时候，使用此链接即可。</p>
 </li>
@@ -265,7 +266,7 @@
 <h1 id="2-使用-jsDelivr-进行-CDN-加速"><a href="#2-使用-jsDelivr-进行-CDN-加速" class="headerlink" title="2. 使用 jsDelivr 进行 CDN 加速"></a>2. 使用 jsDelivr 进行 CDN 加速</h1><p>前面已经利用 GitHub 仓库实现了图床功能，但是大家都知道，GitHub 在国内访问很慢，甚至经常打不开，那么我们的图片就存在加载速度慢的问题，怎么办呢？<strong>jsDelivr</strong> 可以解决此问题，显著提高图片访问的响应速度，并且开源免费！其官网为：<a target="_blank" rel="noopener" href="https://www.jsdelivr.com/">jsDelivr - A free, fast, and reliable CDN for open source</a>。</p>
 <p>使用方法也非常的简单，直接在浏览器通过地址<code>https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名@发布的版本号/文件路径</code>就可以访问 GitHub 上的图片，并且响应速度非常快！其中@发布的版本号可以直接省略，默认加载最新版本，即直接可以简写为<code>https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名/文件路径</code></p>
 <p>比如：<em><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/avatar.jpg">https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/avatar.jpg</a></em></p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221137.png" alt="image-20220208210418418" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221137.png" alt="image-20220208210418418" style="zoom: 67%;" />
 
 <h1 id="3-使用PicGo上传图片"><a href="#3-使用PicGo上传图片" class="headerlink" title="3. 使用PicGo上传图片"></a>3. 使用PicGo上传图片</h1><p>前面实现了 GitHub 仓库作为图床，jsDelivr 对图片进行加速。但是每次我们都需要使用 Git 工具或者在 GitHub 仓库中进行上传图片，并且要自己拼接图片地址，非常麻烦，有没有更快速更简洁的方式呢？此时神器 <strong>PicGo</strong> 就派上了用场，同样开源免费！</p>
 <p>PicGo 是一个用于快速上传图片并获取图片 URL 链接的工具，支持多个图床进行使用，其中当然包括我们现在使用的 GitHub 图床了，它同时支持 Windows、macOS、Linux平台，详情可见：<a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo">Molunerfinn&#x2F;PicGo: A simple &amp; beautiful tool for pictures uploading built by vue-cli-electron-builder (github.com)</a></p>
@@ -287,7 +288,7 @@
 <li><p><strong>设定自定义域名【选填】</strong>：图片上传后，PicGo 会按照【自定义域名+上传的图片名】的方式生成访问链接，放到剪贴板上，因为我们要使用 jsDeliver 进行加速，因而这里设置为<code>https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名</code>，比如我设置为<strong><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1">https://cdn.jsdelivr.net/gh/SniperCoding/pictures1</a></strong></p>
 </li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221149.png" alt="image-20220208221048599" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221149.png" alt="image-20220208221048599" style="zoom: 67%;" />
 </li>
 <li><p>接着就可以在<code>上传区</code>，将自己的图片上传，甚至可以直接将剪切板的截图上传，上传成功后会直接将相应链接复制到剪切板中，我们就可以直接复制到博客（MarkDown 编辑器）中。</p>
 </li>
@@ -303,7 +304,7 @@
 <li><p>打开 PicGo，在<code>PicGo设置</code>中，点击【设置 Server 】，将监听端口修改为：36677</p>
 </li>
 <li><p>打开 Typera，点击【文件】 -&gt; 【偏好设置】-&gt; 【图像】，然后进行如下配置，其中 PicGo 路径是你的 PicGo 的安装路径。</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221154.png" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221154.png" style="zoom: 67%;" />
 
 
 </li>
