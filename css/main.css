@@ -2,6 +2,10 @@
   color: #428bca;
   text-decoration: none;
 }
+.post {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
 :root {
   --body-bg-color: #eee;
   --content-bg-color: #fff;
@@ -1218,7 +1222,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ad1aff;
+  background: #71af86;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
