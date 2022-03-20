@@ -1253,7 +1253,7 @@
       </categories>
   </entry>
   <entry>
-    <title></title>
+    <title>Java基础知识</title>
     <url>/2022/02/16/Java%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h1 id="一-Java开发环境"><a href="#一-Java开发环境" class="headerlink" title="一. Java开发环境"></a>一. Java开发环境</h1><ol>
 <li><p><code>JVM</code>（Java Virtual Machine）java虚拟机</p>
@@ -1263,6 +1263,10 @@
 <p>JRE &#x3D; JVM +  Java程序执行所需要的核心类库。</p>
 </li>
 <li><p><code>JDK</code>（Java Development Kit）Java开发工具包<br>JDK &#x3D; JRE + 开发工具（java、javac…）</p>
+</li>
+</ol>
+<span id="more"></span>
+
 <img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220216214516.png" style="zoom: 50%;" />
 
 <blockquote>
@@ -1270,8 +1274,6 @@
 <p>如果想要运行一个Java程序，可以只安装JRE，不安装JDK；</p>
 <p>如果想要开发一个Java程序 ，必须安装JDK；</p>
 </blockquote>
-</li>
-</ol>
 <h1 id="二-Java语法规范"><a href="#二-Java语法规范" class="headerlink" title="二. Java语法规范"></a>二. Java语法规范</h1><h2 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h2><ul>
 <li><strong>类</strong>：类是一个模板，它描述一类对象的行为和状态。</li>
 <li><strong>对象</strong>：对象是类的一个实例，有状态和行为。</li>
@@ -2950,5 +2952,8 @@ Lock只有代码块锁，synchronized有代码块锁和方法锁</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">(Predicate&lt;String&gt; predicate)</span> &#123;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">veryLong</span> <span class="operator">=</span> predicate.test(<span class="string">&quot;HelloWorld&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;字符串很长吗：&quot;</span> + veryLong);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        method(s-&gt;s.length() &gt; <span class="number">5</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">控制台信息为：</span><br><span class="line">字符串很长吗：<span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="3-方法引用"><a href="#3-方法引用" class="headerlink" title="3. 方法引用"></a>3. 方法引用</h2><h2 id="4-Stream-API"><a href="#4-Stream-API" class="headerlink" title="4. Stream API"></a>4. Stream API</h2><h2 id="5-Optional类"><a href="#5-Optional类" class="headerlink" title="5. Optional类"></a>5. Optional类</h2><h2 id="6-日期API"><a href="#6-日期API" class="headerlink" title="6. 日期API"></a>6. 日期API</h2><h1 id="十六-Java9新特性"><a href="#十六-Java9新特性" class="headerlink" title="十六.  Java9新特性"></a>十六.  Java9新特性</h1><h1 id="十七-Java10新特性"><a href="#十七-Java10新特性" class="headerlink" title="十七.  Java10新特性"></a>十七.  Java10新特性</h1><h1 id="十八-Java11新特性"><a href="#十八-Java11新特性" class="headerlink" title="十八.  Java11新特性"></a>十八.  Java11新特性</h1><h1 id="十九-Java12新特性"><a href="#十九-Java12新特性" class="headerlink" title="十九.  Java12新特性"></a>十九.  Java12新特性</h1><h1 id="二十-Java13新特性"><a href="#二十-Java13新特性" class="headerlink" title="二十.  Java13新特性"></a>二十.  Java13新特性</h1><h1 id="二十一-Java14新特性"><a href="#二十一-Java14新特性" class="headerlink" title="二十一.  Java14新特性"></a>二十一.  Java14新特性</h1>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
   </entry>
 </search>
