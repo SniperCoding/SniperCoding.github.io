@@ -429,6 +429,8 @@
     <title>RabbitMQ进阶知识</title>
     <url>/2022/03/10/RabbitMQ%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<h1 id="1-消息可靠性"><a href="#1-消息可靠性" class="headerlink" title="1. 消息可靠性"></a>1. 消息可靠性</h1><p>可靠性是评估消息队列优劣的一个重要标准之一，在一些核心业务，尤其是一些涉及到 money 方面的一些业务中，可靠性至关重要！消息队列在传递消息的过程中要保证消息的不丢失。在消息的传递过程中，涉及到生产者、RabbitMQ和消费者，那么消息可能在哪些情况下丢失呢？主要有以下三个方面：</p>
+<span id="more"></span>
+
 <ul>
 <li><strong>消息在生产者到 RabbitMQ 的传递之间丢失。</strong></li>
 <li><strong>RabbitMQ 宕机，导致消息丢失。</strong></li>
@@ -737,6 +739,8 @@
     <content><![CDATA[<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h1><h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1. 概述"></a>1.1. 概述</h2><blockquote>
 <p>消息队列简称 MQ，英文全称为 <code>Message Queue</code>，它是一种跨进程的通信机制，用于上下游传递消息。采取典型的生产者和消费者模型，生产者不断的向队列中发送消息，消费者不断的从队列中获取消息。</p>
 </blockquote>
+<span id="more"></span>
+
 <p>MQ 的优点：</p>
 <ul>
 <li><p>任务<strong>异步处理</strong></p>
