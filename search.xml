@@ -6,21 +6,21 @@
     <content><![CDATA[<h1 id="0-初衷"><a href="#0-初衷" class="headerlink" title="0. 初衷"></a>0. 初衷</h1><blockquote>
 <p>平时写文章，经常需要插入图片，免不了需要使用图床工具把本地图片转换成链接。市面上的图床工具非常多，但很多都需要收费，有些免费的也存在着不稳定的风险。<span id="more"></span>而 GitHub 作为全球最大的“同性交友网站”，不仅稳定性高，而且简单易用，关键还可以免费白嫖！下面教大家如何更好地利用 GitHub 搭建图床。</p>
 </blockquote>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221106.png" alt="image-20220208202732428" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164911.png" alt="image-20220208202732428" style="zoom: 67%;" />
 
 <h1 id="1-创建-GitHub-仓库"><a href="#1-创建-GitHub-仓库" class="headerlink" title="1. 创建 GitHub 仓库"></a>1. 创建 GitHub 仓库</h1><p>注册&#x2F;登录自己的 GitHub，创建一个新的名字任意的<strong>公开</strong>仓库。然后上传图片到仓库中，这里我直接使用浏览器端上传的，也可以使用 Git 进行上传。</p>
 <ul>
 <li>在创建的仓库中点击<code>Upload files</code>。</li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221128.png" alt="image-20210903190649347" style="zoom: 110%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164912.png" alt="image-20210903190649347" style="zoom: 110%;" />
 
 <ul>
 <li><p>选择上传的图片，然后提交。</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221131.png" alt="image-20220208204506190" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164913.png" alt="image-20220208204506190" style="zoom: 67%;" />
 </li>
 <li><p>提交之后，就可以在浏览器通过地址<code>https://raw.githubusercontent.com/你的用户名/你的仓库名/main/文件路径</code>来访问所上传的图片。</p>
 <p>比如：<em><a href="https://raw.githubusercontent.com/SniperCoding/pictures1/main/avatar.jpg">https://raw.githubusercontent.com/SniperCoding/pictures1/main/avatar.jpg</a></em></p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221134.png" alt="image-20220208210418418" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164914.png" alt="image-20220208210418418" style="zoom: 67%;" />
 </li>
 <li><p>之后在博客中插入图片的时候，使用此链接即可。</p>
 </li>
@@ -28,14 +28,14 @@
 <h1 id="2-使用-jsDelivr-进行-CDN-加速"><a href="#2-使用-jsDelivr-进行-CDN-加速" class="headerlink" title="2. 使用 jsDelivr 进行 CDN 加速"></a>2. 使用 jsDelivr 进行 CDN 加速</h1><p>前面已经利用 GitHub 仓库实现了图床功能，但是大家都知道，GitHub 在国内访问很慢，甚至经常打不开，那么我们的图片就存在加载速度慢的问题，怎么办呢？<strong>jsDelivr</strong> 可以解决此问题，显著提高图片访问的响应速度，并且开源免费！其官网为：<a href="https://www.jsdelivr.com/">jsDelivr - A free, fast, and reliable CDN for open source</a>。</p>
 <p>使用方法也非常的简单，直接在浏览器通过地址<code>https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名@发布的版本号/文件路径</code>就可以访问 GitHub 上的图片，并且响应速度非常快！其中@发布的版本号可以直接省略，默认加载最新版本，即直接可以简写为<code>https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名/文件路径</code></p>
 <p>比如：<em><a href="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/avatar.jpg">https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/avatar.jpg</a></em></p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221137.png" alt="image-20220208210418418" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164750.png" alt="image-20220208210418418" style="zoom: 67%;" />
 
 <h1 id="3-使用PicGo上传图片"><a href="#3-使用PicGo上传图片" class="headerlink" title="3. 使用PicGo上传图片"></a>3. 使用PicGo上传图片</h1><p>前面实现了 GitHub 仓库作为图床，jsDelivr 对图片进行加速。但是每次我们都需要使用 Git 工具或者在 GitHub 仓库中进行上传图片，并且要自己拼接图片地址，非常麻烦，有没有更快速更简洁的方式呢？此时神器 <strong>PicGo</strong> 就派上了用场，同样开源免费！</p>
 <p>PicGo 是一个用于快速上传图片并获取图片 URL 链接的工具，支持多个图床进行使用，其中当然包括我们现在使用的 GitHub 图床了，它同时支持 Windows、macOS、Linux平台，详情可见：<a href="https://github.com/Molunerfinn/PicGo">Molunerfinn&#x2F;PicGo: A simple &amp; beautiful tool for pictures uploading built by vue-cli-electron-builder (github.com)</a></p>
 <p>这里以 Windows 为例，说明 PicGo 的使用方法。</p>
 <ul>
 <li><p>下载并安装 PicGo，<a href="https://github.com/Molunerfinn/PicGo/releases/download/v2.2.2/PicGo-Setup-2.2.2.exe">https://github.com/Molunerfinn/PicGo/releases/download/v2.2.2/PicGo-Setup-2.2.2.exe</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221141.png" alt="image-20210903201908609"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/20220324164915.png" alt="image-20210903201908609"></p>
 </li>
 <li><p>打开 PicGo 软件，找到<code>图床设置</code>中的<code>GitHub图床</code>，填写相关信息。</p>
 <ul>
@@ -50,7 +50,7 @@
 <li><p><strong>设定自定义域名【选填】</strong>：图片上传后，PicGo 会按照【自定义域名+上传的图片名】的方式生成访问链接，放到剪贴板上，因为我们要使用 jsDeliver 进行加速，因而这里设置为<code>https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名</code>，比如我设置为<strong><a href="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1">https://cdn.jsdelivr.net/gh/SniperCoding/pictures1</a></strong></p>
 </li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221149.png" alt="image-20220208221048599" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164916.png" alt="image-20220208221048599" style="zoom: 67%;" />
 </li>
 <li><p>接着就可以在<code>上传区</code>，将自己的图片上传，甚至可以直接将剪切板的截图上传，上传成功后会直接将相应链接复制到剪切板中，我们就可以直接复制到博客（MarkDown 编辑器）中。</p>
 </li>
@@ -66,7 +66,7 @@
 <li><p>打开 PicGo，在<code>PicGo设置</code>中，点击【设置 Server 】，将监听端口修改为：36677</p>
 </li>
 <li><p>打开 Typera，点击【文件】 -&gt; 【偏好设置】-&gt; 【图像】，然后进行如下配置，其中 PicGo 路径是你的 PicGo 的安装路径。</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220208221154.png" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164917.png" style="zoom: 67%;" />
 
 
 </li>
@@ -77,155 +77,6 @@
 ]]></content>
       <categories>
         <category>其他</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Hexo+GitHub搭建个人博客</title>
-    <url>/2022/02/10/%E6%96%B0%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h1 id="0-初衷"><a href="#0-初衷" class="headerlink" title="0. 初衷"></a>0. 初衷</h1><blockquote>
-<p>将所学知识点记录在博客上是一个很好的习惯。一方面，可以加深自己对技术点的理解，同时方便以后复习回顾；另一方面，可以将自己的见解分享出去，帮助更多的人，更好的发挥开源精神。</p>
-<span id="more"></span>
-
-<p>目前存在许许多多的博客平台，但是很多平台都比较乱，甚至有很多广告，而且有些博客平台也不支持自定义样式。</p>
-<p>如果想要有一个只属于自己的博客，并且页面可以自定义为所喜欢的样式，同时还可以免费白嫖，那该多好 啊！而 <strong>GitHub + Hexo</strong> 就可以实现这些！</p>
-</blockquote>
-<h1 id="1-前置环境"><a href="#1-前置环境" class="headerlink" title="1. 前置环境"></a>1. 前置环境</h1><p>使用 GitHub + Hexo 搭建环境之前，需要提前做以下准备：</p>
-<ul>
-<li><p>注册 GitHub 账号，官网：<a href="https://github.com/">https://github.com/</a></p>
-</li>
-<li><p>安装 Git，官网：<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p>
-<p>安装较为简单，基本流程：下载安装包—-&gt;双击安装包后一路 Next—&gt;cmd 窗口使用 git –version 验证安装是否成功，之后需要做一些初始化设置，比如用户名和邮箱，并于自己的GitHub进行关联，Git学习教程可见<a href="https://www.runoob.com/git/git-tutorial.html">https://www.runoob.com/git/git-tutorial.html</a></p>
-</li>
-<li><p>安装 Node.js，官网：<a href="https://nodejs.org/en/">https://nodejs.org/en/</a></p>
-<p>安装较为简单，基本流程：下载安装包—-&gt;双击安装包后一路 Next —&gt; cmd 窗口分别输入 node -v 和 npm -v 验证安装是否成功。</p>
-</li>
-</ul>
-<h1 id="2-安装-Hexo"><a href="#2-安装-Hexo" class="headerlink" title="2. 安装 Hexo"></a>2. 安装 Hexo</h1><ul>
-<li><p>打开 cmd 命令行窗口，输入命令：<code>npm install -g hexo-cli</code> 进行安装。</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220209091701.png" style="zoom: 55%;" />
-</li>
-<li><p>输入 <code>hexo -v</code>，出现版本号，即安装成功！</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220211085311.png" style="zoom:51%;" /></li>
-</ul>
-<h1 id="3-本地部署-Hexo"><a href="#3-本地部署-Hexo" class="headerlink" title="3. 本地部署 Hexo"></a>3. 本地部署 Hexo</h1><p>安装完Hexo后，接下来在本地进行部署，部署完成后，Hexo服务器会运行在本地的4000端口上，当我们输入<a><a href="http://localhost:4000/">http://localhost:4000/</a></a> 时就可以在浏览器中看到自己的博客网站了！具体步骤如下：</p>
-<ul>
-<li><p>在任意地方（比如在D盘）新建一个文件夹 Blog（以后发布的文章、主题均在此文件夹中，也可以自定义为其他名称），进入文件夹，在空白处点击右键，选择  <code>Git Bash Here</code></p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220211085319.png" style="zoom:70%;" />
-</li>
-<li><p>在Git Bash中输入<code>hexo init</code>，初始化 hexo 博客（此时会去 GitHub 中克隆 hexo-starter）</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220211085326.png" style="zoom:70%;" />
-</li>
-<li><p>初始化完成后，Blog 文件夹中会多出一些文件</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220211085332.png" style="zoom:67%;" />
-</li>
-<li><p>在 Git Bash 中输入<code>hexo g</code>，生成静态文件（也可以使用全命令 hexo generate）</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220211085337.png" style="zoom:67%;" />
-</li>
-<li><p>在 Git Bash 中输入<code>hexo s</code>，启动 hexo 服务器（也可以使用全命令 hexo server） </p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220211085342.png" style="zoom:67%;" />
-</li>
-<li><p>启动 hexo 服务器后，在浏览器输入网址：<a><a href="http://localhost:4000/">http://localhost:4000/</a></a>，出现以下界面，即表明本地 hexo 部署成功！</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220211085345.png" style="zoom: 50%;" /></li>
-</ul>
-<h1 id="4-远程部署（GitHub）Hexo"><a href="#4-远程部署（GitHub）Hexo" class="headerlink" title="4. 远程部署（GitHub）Hexo"></a>4. 远程部署（GitHub）Hexo</h1><p>以上我们将 Hexo 部署到了本地，但是存在一个问题，此时仅自己或者是局域网内的小伙伴可以看到此博客网站，其他人并不能在网络上进行访问，为了让所有人都可以访问我们的博客网站，可以借助于 GitHub 实现远程部署。下面是远程部署流程：</p>
-<ul>
-<li><p>在 GitHub 上新建一个仓库，仓库名<strong>必须</strong>为：<code>你的用户名.github.io</code>，比如我的叫：<em>SniperCoding.github.io</em></p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220211090138.png" style="zoom:67%;" />
-</li>
-<li><p>点击<code>Create repository</code>创建仓库后，复制仓库地址</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220211090153.png" style="zoom:65%;" />
-</li>
-<li><p>打开 Blog 文件夹中的 _config.yml 文件，将最下面内容修改如下（其中 repository 填写刚才复制的地址）：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repository:</span> <span class="string">https://github.com/你的用户名/你的用户名.github.io.git</span></span><br></pre></td></tr></table></figure>
-
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220211085428.png" style="zoom:60%;" />
-</li>
-<li><p>在 Git Bash 中使用 Ctrl+C 退出刚才的本地部署，然后输入命令<code> npm install --save hexo-deployer-git</code>安装 Git 部署插件</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220211085433.png" style="zoom:67%;" />
-</li>
-<li><p>接着依次键入</p>
-<ul>
-<li><code>hexo clean</code> (清除缓存文件 (db.json) 和已生成的静态文件 (public)。)</li>
-<li><code>hexo g</code>（hexo generate，生成静态文件）</li>
-<li><code>hexo d</code>（hexo deploy，部署网站到配置文件中指定的仓库，此步需要输入 GitHub 账号密码）</li>
-</ul>
-</li>
-<li><p>在浏览器打开 <code>https://你的用户名.github.io/</code>（比如我的是 <a><a href="https://snipercoding.github.io/">https://snipercoding.github.io/</a></a>），出现以下界面，即表明 Hexo 远程部署成功！</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220211085441.png" style="zoom:50%;" /></li>
-</ul>
-<h1 id="5-Hexo目录结构"><a href="#5-Hexo目录结构" class="headerlink" title="5. Hexo目录结构"></a>5. Hexo目录结构</h1><table>
-<thead>
-<tr>
-<th>文件&#x2F;文件夹</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>node_modules</td>
-<td>存放已安装的各类依赖包</td>
-</tr>
-<tr>
-<td><strong>public</strong></td>
-<td>当执行<code>Hexo g</code>命令后会生成此文件夹，实际上会将source文件夹里的Markdown文档，使用当前主题将其转换成HTML文件，我们在博客中看到的就是此页面。（使用 <code>hexo clean</code>会 清除 db.json 和 public 文件夹下的所有文件。）</td>
-</tr>
-<tr>
-<td>scaffolds</td>
-<td>模版 文件夹。当新建文章时，Hexo 会根据 scaffold 来建立文件。包含 page，post，draft三种模板，分别对应 页面、要发布的文章、草稿。</td>
-</tr>
-<tr>
-<td><strong>source</strong></td>
-<td>用户资源文件夹。 其下_posts 文件夹用来存放图片、Markdown 文章等，通过<code>Hexo g</code>命令将文章解析为HTML文件放到public文件夹中</td>
-</tr>
-<tr>
-<td>themes</td>
-<td>主题文件夹。每个主题都会有一个单独文件夹。其默认主题为<a href="https://link.segmentfault.com/?url=https://github.com/hexojs/hexo-theme-landscape">landscape</a>。</td>
-</tr>
-<tr>
-<td><strong>_config.yml</strong></td>
-<td>全局配置文件。可设置包括网站标题、副标题、作者、关键字和描述信息、主题等</td>
-</tr>
-<tr>
-<td><strong>.deploy_git</strong></td>
-<td>当执行<code>hexo d</code>远程部署时会生成此文件夹，实际上会将public文件夹的内容提交到Github后中，内容与public文件夹基本一致（不一致的情况是由于重新生成，但是没有发布站点造成，此时 public 内容新于 .deploy_gi 内容）。</td>
-</tr>
-</tbody></table>
-<h1 id="6-Hexo发布文章"><a href="#6-Hexo发布文章" class="headerlink" title="6. Hexo发布文章"></a>6. Hexo发布文章</h1><p>在 Git Bash 中输入<code>hexo new &quot;文章标题&quot;</code>，会在 &#x2F;source&#x2F;_posts&#x2F; 文件夹中生成<strong>文章标题.md</strong>文件</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220211085448.png" style="zoom:70%;" />
-
-<p>打开<strong>文章标题.md</strong>文件，然后编写文章内容（遵循Markdown语法规范）</p>
-<p>之后在 Git Bash 依次键入以下命令远程部署：</p>
-<ul>
-<li><code>hexo clean</code> (清除缓存文件 (db.json) 和已生成的静态文件 (public)。)</li>
-<li><code>hexo g</code>（hexo generate，生成静态文件）</li>
-<li><code>hexo d</code>（hexo deploy，部署网站到配置文件中指定的仓库，此步需要输入github账号密码）</li>
-</ul>
-<p>打开 GitHub网址，即可看到自己新发布的文章.</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220211085455.png" style="zoom:35%;" />
-
-<p>注意：文章中使用图片较为特殊，建议大家利用充分利用 GitHub, 将其作为图床，将本地图片转化为url链接，然后在文章中使用，详情可见：<a href="https://snipercoding.github.io/2022/02/10/GitHub+JSDelivr+PicGo+Typora%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A/">GitHub+JSDelivr+PicGo+Typora搭建个人图床</a></p>
-<p>也可以使用下面方式配置图片路径（配置一次就好）：</p>
-<ul>
-<li><p>打开 **_config.yml **配置文件，将 <strong>post_asset_folder</strong> 的值修改为 true</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220211085502.png" style="zoom:67%;" />
-</li>
-<li><p>在 Git Bash 中输入命令<code>npm install hexo-asset-image --save</code>安装插件</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220211085512.png" style="zoom:67%;" />
-</li>
-<li><p>修改 node_modules\hexo-asset-image\index.js 内容</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> cheerio = <span class="built_in">require</span>(<span class="string">&#x27;cheerio&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// http://stackoverflow.com/questions/14480345/how-to-get-the-nth-occurrence-in-a-string</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getPosition</span>(<span class="params">str, m, i</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> str.<span class="title function_">split</span>(m, i).<span class="title function_">join</span>(m).<span class="property">length</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> version = <span class="title class_">String</span>(hexo.<span class="property">version</span>).<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">filter</span>.<span class="title function_">register</span>(<span class="string">&#x27;after_post_render&#x27;</span>, <span class="keyword">function</span>(<span class="params">data</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> config = hexo.<span class="property">config</span>;</span><br><span class="line">  <span class="keyword">if</span>(config.<span class="property">post_asset_folder</span>)&#123;</span><br><span class="line">    	<span class="keyword">var</span> link = data.<span class="property">permalink</span>;</span><br><span class="line">	<span class="keyword">if</span>(version.<span class="property">length</span> &gt; <span class="number">0</span> &amp;&amp; <span class="title class_">Number</span>(version[<span class="number">0</span>]) == <span class="number">3</span>)</span><br><span class="line">	   <span class="keyword">var</span> beginPos = <span class="title function_">getPosition</span>(link, <span class="string">&#x27;/&#x27;</span>, <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	   <span class="keyword">var</span> beginPos = <span class="title function_">getPosition</span>(link, <span class="string">&#x27;/&#x27;</span>, <span class="number">3</span>) + <span class="number">1</span>;</span><br><span class="line">	<span class="comment">// In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;.../about/index.html&quot;.</span></span><br><span class="line">	<span class="keyword">var</span> endPos = link.<span class="title function_">lastIndexOf</span>(<span class="string">&#x27;/&#x27;</span>) + <span class="number">1</span>;</span><br><span class="line">    link = link.<span class="title function_">substring</span>(beginPos, endPos);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> toprocess = [<span class="string">&#x27;excerpt&#x27;</span>, <span class="string">&#x27;more&#x27;</span>, <span class="string">&#x27;content&#x27;</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; toprocess.<span class="property">length</span>; i++)&#123;</span><br><span class="line">      <span class="keyword">var</span> key = toprocess[i];</span><br><span class="line"> </span><br><span class="line">      <span class="keyword">var</span> $ = cheerio.<span class="title function_">load</span>(data[key], &#123;</span><br><span class="line">        <span class="attr">ignoreWhitespace</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">xmlMode</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">lowerCaseTags</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">decodeEntities</span>: <span class="literal">false</span></span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      $(<span class="string">&#x27;img&#x27;</span>).<span class="title function_">each</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">if</span> ($(<span class="variable language_">this</span>).<span class="title function_">attr</span>(<span class="string">&#x27;src&#x27;</span>))&#123;</span><br><span class="line">			<span class="comment">// For windows style path, we replace &#x27;\&#x27; to &#x27;/&#x27;.</span></span><br><span class="line">			<span class="keyword">var</span> src = $(<span class="variable language_">this</span>).<span class="title function_">attr</span>(<span class="string">&#x27;src&#x27;</span>).<span class="title function_">replace</span>(<span class="string">&#x27;\\&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">			<span class="keyword">if</span>(!<span class="regexp">/http[s]*.*|\/\/.*/</span>.<span class="title function_">test</span>(src) &amp;&amp;</span><br><span class="line">			   !<span class="regexp">/^\s*\//</span>.<span class="title function_">test</span>(src)) &#123;</span><br><span class="line">			  <span class="comment">// For &quot;about&quot; page, the first part of &quot;src&quot; can&#x27;t be removed.</span></span><br><span class="line">			  <span class="comment">// In addition, to support multi-level local directory.</span></span><br><span class="line">			  <span class="keyword">var</span> linkArray = link.<span class="title function_">split</span>(<span class="string">&#x27;/&#x27;</span>).<span class="title function_">filter</span>(<span class="keyword">function</span>(<span class="params">elem</span>)&#123;</span><br><span class="line">				<span class="keyword">return</span> elem != <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">			  &#125;);</span><br><span class="line">			  <span class="keyword">var</span> srcArray = src.<span class="title function_">split</span>(<span class="string">&#x27;/&#x27;</span>).<span class="title function_">filter</span>(<span class="keyword">function</span>(<span class="params">elem</span>)&#123;</span><br><span class="line">				<span class="keyword">return</span> elem != <span class="string">&#x27;&#x27;</span> &amp;&amp; elem != <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">			  &#125;);</span><br><span class="line">			  <span class="keyword">if</span>(srcArray.<span class="property">length</span> &gt; <span class="number">1</span>)</span><br><span class="line">				srcArray.<span class="title function_">shift</span>();</span><br><span class="line">			  src = srcArray.<span class="title function_">join</span>(<span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">			  $(<span class="variable language_">this</span>).<span class="title function_">attr</span>(<span class="string">&#x27;src&#x27;</span>, config.<span class="property">root</span> + link + src);</span><br><span class="line">			  <span class="variable language_">console</span>.<span class="property">info</span>&amp;&amp;<span class="variable language_">console</span>.<span class="title function_">info</span>(<span class="string">&quot;update link as:--&gt;&quot;</span>+config.<span class="property">root</span> + link + src);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="property">info</span>&amp;&amp;<span class="variable language_">console</span>.<span class="title function_">info</span>(<span class="string">&quot;no src attr, skipped...&quot;</span>);</span><br><span class="line">			<span class="variable language_">console</span>.<span class="property">info</span>&amp;&amp;<span class="variable language_">console</span>.<span class="title function_">info</span>($(<span class="variable language_">this</span>));</span><br><span class="line">		&#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      data[key] = $.<span class="title function_">html</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置完图片路径后，以后在使用 <code>hexo new &quot;文章标题&quot;</code>命令后，会在 &#x2F;source&#x2F;_post 下生成<strong>文章标题.md文件</strong>和<strong>文章标题文件夹</strong>，将所需要的图片放入到标题文件夹中。在文章中可以使用相对路径引用图片资源<code>![](图片相对路径)</code></p>
-<p>比如使用 hexo new “test_article” 创建一篇文章，会在 &#x2F;source&#x2F;_post 生成 <strong>test_article.md 文件</strong>和 <strong>test_article文件夹</strong>，然后将 test.jpg 放入 test_article 文件夹中，在文章中只需要使用<code>![](test_article/test.jpg)</code>即可。</p>
-</li>
-</ul>
-<h1 id="7-Hexo配置站点信息"><a href="#7-Hexo配置站点信息" class="headerlink" title="7. Hexo配置站点信息"></a>7. Hexo配置站点信息</h1><p>打开 _config.yml 文件，按自己需求修改以下内容</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">SniperCoding的个人博客</span>		 			  <span class="comment"># 网站标题</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">&#x27;&#x27;</span>		  						      <span class="comment"># 网站副标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&#x27;请不要假装很努力，因为结果不会陪你演戏&#x27;</span>  <span class="comment"># 网站描述（一般为格言）</span></span><br><span class="line"><span class="attr">keywords:</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">SniperCoding</span>					   		  <span class="comment"># 网站作者</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span>									  <span class="comment"># 网站语言</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">&#x27;Asia/Shanghai&#x27;</span>						  <span class="comment"># 网站时区</span></span><br></pre></td></tr></table></figure>
-
-<p>注意_config.yml 文件的编码格式应为 utf-8，否则会出现中文乱码。</p>
-<p>以上就是使用 <code>GitHub</code> + <code>Hexo</code> 搭建简易个人博客的流程，但是博客默认主题样式不够美观，如果想要自定义博客样式的话，可以自行更换主题，下期我将向大家介绍，如何将Hexo的主题更换为next主题，并对自己的个人博客增加各种功能，比如添加背景、进度条、评论、文章目录等等。</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
       </categories>
   </entry>
   <entry>
@@ -240,12 +91,12 @@
 <li><p>下载 NexT 主题，并放到 themes&#x2F;next 文件夹中</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220210212915.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/20220324165200.png"></p>
 </li>
 <li><p>修改 _config.yml 文件，将 theme 修改为 next</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220210212924.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/20220324165201.png"></p>
 </li>
 <li><p>之后再使用 <code>hexo clean</code>、<code>hexo g</code>、<code>hexo d </code>命令远程部署后，打开网站就会发现主题焕然一新。</p>
 </li>
@@ -324,31 +175,31 @@
 <h2 id="13、修改网站底部信息（footer）"><a href="#13、修改网站底部信息（footer）" class="headerlink" title="13、修改网站底部信息（footer）"></a>13、修改网站底部信息（footer）</h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="attr">since:</span> <span class="number">2022</span>  			<span class="comment"># 建站时间</span></span><br><span class="line">  <span class="attr">icon:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">fa</span> <span class="string">fa-heart</span>	<span class="comment"># 一个❤的图标</span></span><br><span class="line">    <span class="attr">animated:</span> <span class="literal">true</span>		<span class="comment"># 图标是否跳动</span></span><br><span class="line">    <span class="attr">color:</span> <span class="string">&quot;#ff0000&quot;</span>	<span class="comment"># 图标颜色</span></span><br><span class="line">  <span class="attr">copyright:</span></span><br><span class="line">  <span class="attr">powered:</span> <span class="literal">false</span>  		<span class="comment"># 是否显示“由 Hexo &amp; NexT.Gemini 强力驱动”</span></span><br></pre></td></tr></table></figure>
 
 <p>若想在底部显示站点运行时间，可编辑<code>\themes\next\layout\_partials\footer.swig</code>，在下图所在位置添加指定内容</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220210212936.png" alt="" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165202.png" alt="" style="zoom:67%;" />
 
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;sitetime&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">javascript</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">function</span> <span class="title function_">siteTime</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">		<span class="variable language_">window</span>.<span class="built_in">setTimeout</span>(<span class="string">&quot;siteTime()&quot;</span>, <span class="number">1000</span>);</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> seconds = <span class="number">1000</span>;</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> minutes = seconds * <span class="number">60</span>;</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> hours = minutes * <span class="number">60</span>;</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> days = hours * <span class="number">24</span>;</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> years = days * <span class="number">365</span>;</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> today = <span class="keyword">new</span> <span class="title class_">Date</span>();</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> todayYear = today.<span class="title function_">getFullYear</span>();</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> todayMonth = today.<span class="title function_">getMonth</span>()+<span class="number">1</span>;</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> todayDate = today.<span class="title function_">getDate</span>();</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> todayHour = today.<span class="title function_">getHours</span>();</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> todayMinute = today.<span class="title function_">getMinutes</span>();</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> todaySecond = today.<span class="title function_">getSeconds</span>();</span></span><br><span class="line"><span class="language-javascript">		<span class="comment">/* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">		year - 作为date对象的年份，为4位年份值</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">		month - 0-11之间的整数，做为date对象的月份</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">		day - 1-31之间的整数，做为date对象的天数</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">		hours - 0(午夜24点)-23之间的整数，做为date对象的小时数</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">		minutes - 0-59之间的整数，做为date对象的分钟数</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">		seconds - 0-59之间的整数，做为date对象的秒数</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">		microseconds - 0-999之间的整数，做为date对象的毫秒数 */</span></span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> t1 = <span class="title class_">Date</span>.<span class="title function_">UTC</span>(<span class="number">2021</span>,<span class="number">08</span>,<span class="number">13</span>,<span class="number">00</span>,<span class="number">00</span>,<span class="number">00</span>); <span class="comment">//北京时间2021-08-13 00:00:00（修改为自己的建站时间）</span></span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> t2 = <span class="title class_">Date</span>.<span class="title function_">UTC</span>(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> diff = t2-t1;</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> diffYears = <span class="title class_">Math</span>.<span class="title function_">floor</span>(diff/years);</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> diffDays = <span class="title class_">Math</span>.<span class="title function_">floor</span>((diff/days)-diffYears*<span class="number">365</span>);</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> diffHours = <span class="title class_">Math</span>.<span class="title function_">floor</span>((diff-(diffYears*<span class="number">365</span>+diffDays)*days)/hours);</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> diffMinutes = <span class="title class_">Math</span>.<span class="title function_">floor</span>((diff-(diffYears*<span class="number">365</span>+diffDays)*days-diffHours*hours)/minutes);</span></span><br><span class="line"><span class="language-javascript">		<span class="keyword">var</span> diffSeconds = <span class="title class_">Math</span>.<span class="title function_">floor</span>((diff-(diffYears*<span class="number">365</span>+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);</span></span><br><span class="line"><span class="language-javascript">		<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;sitetime&quot;</span>).<span class="property">innerHTML</span>=<span class="string">&quot; 本网站已运行&quot;</span>+<span class="comment">/*diffYears+&quot; 年 &quot;+*/</span>diffDays+<span class="string">&quot; 天 &quot;</span>+diffHours+<span class="string">&quot; 小时 &quot;</span>+diffMinutes+<span class="string">&quot; 分钟 &quot;</span>+diffSeconds+<span class="string">&quot; 秒&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">	&#125;</span></span><br><span class="line"><span class="language-javascript">	<span class="title function_">siteTime</span>();</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="14、添加网易云音乐"><a href="#14、添加网易云音乐" class="headerlink" title="14、添加网易云音乐"></a>14、添加网易云音乐</h2><ul>
 <li>在网页版<a href="https://music.163.com/">网易云音乐</a>中选择自己喜欢的歌曲&#x2F;歌单，然后点击<u>生成外链播放器</u>，官方教程<a href="https://music.163.com/#/outchain/0/786909207/">https://music.163.com/#/outchain/0/786909207/</a></li>
 </ul>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220210212944.png" alt="" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165203.png" alt="" style="zoom:50%;" />
 
 <ul>
 <li><p>在生成外链界面，修改所要显示的格式以及宽高，然后复制HTML代码</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220210213009.png" alt="" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165204.png" alt="" style="zoom: 67%;" />
 </li>
 <li><p>将代码插入到<code>Blog\themes\next\layout\_macro\sidebar.swig</code>文件中（位置仅供参考，可自行选择所需位置，不同的位置效果呈现的效果不同）。</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220210213036.png" alt="" style="zoom:60%;" /></li>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165205.png" alt="" style="zoom:60%;" /></li>
 </ul>
 <h2 id="15、设置主题页面布局为圆角"><a href="#15、设置主题页面布局为圆角" class="headerlink" title="15、设置主题页面布局为圆角"></a>15、设置主题页面布局为圆角</h2><p>将页面中的方形边框修改为圆角。</p>
 <ul>
 <li><p>打开<code>Blog\themes\next\source\css\_variables\Gemini.styl </code>文件（我用的是 Gemini 主题风格，如果用的是其他的，就打开相应的文件）</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220210213056.png" alt="" style="zoom: 67%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165206.png" alt="" style="zoom: 67%;" />
 </li>
 <li><p>将最低端代码修改为以下内容（可自行修改圆角尺寸，这里以15px为例）</p>
 <figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="comment">// $border-radius-inner    = initial;</span></span><br><span class="line"><span class="comment">// $border-radius		= initial;</span></span><br><span class="line"><span class="variable">$border</span>-radius-inner = <span class="number">15px</span> <span class="number">15px</span> <span class="number">15px</span> <span class="number">15px</span>;</span><br><span class="line"><span class="variable">$border</span>-radius = <span class="number">15px</span>;</span><br></pre></td></tr></table></figure>
 
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220210213146.png" alt="" style="zoom:67%;" /></li>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165207.png" alt="" style="zoom:67%;" /></li>
 </ul>
 <h2 id="16、添加动态背景（添加动态背景的同时也可以添加静态背景）"><a href="#16、添加动态背景（添加动态背景的同时也可以添加静态背景）" class="headerlink" title="16、添加动态背景（添加动态背景的同时也可以添加静态背景）"></a>16、添加动态背景（添加动态背景的同时也可以添加静态背景）</h2><p>Nest支持的常见的动态背景有 <strong>Canvas-nest</strong> 风格、**JavaScript 3D  library <strong>风格 、</strong>Canvas-ribbon **风格三种动态背景，但都需要自己手动下载相应静态资源，这里以 <strong>JavaScript 3D  library</strong> 风格为例。</p>
 <p>JavaScript 3D  library 的官方地址为<a href="https://github.com/theme-next/theme-next-three">https://github.com/theme-next/theme-next-three</a></p>
@@ -366,7 +217,7 @@
 <li><p>修改 <code>Blog\themes\next\layout\_layout.swig</code> 文件，添加如下内容：</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> theme.fireworks %&#125; </span><br><span class="line">   &lt;script async <span class="built_in">type</span>=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;/js/fireworks.js&quot;</span>&gt;&lt;/script&gt;    </span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
 
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220211083455.png" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165208.png" style="zoom:67%;" />
 </li>
 <li><p>打开 <code>Blog\themes\next\_config.yml</code> 配置文件，在任意位置添加以下内容</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 鼠标点击，出现烟花效果</span></span><br><span class="line">fireworks: <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
@@ -384,7 +235,7 @@
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install hexo-helper-live2d --save</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>默认在页面中展示的是 shizuku，如下图所示。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220210213230.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/20220324165209.png"></p>
 <p>根据爱好可自行选择自己的萌宠，所有萌宠在<a href="https://huaji8.top/post/live2d-plugin-2.0/%E4%B8%AD%E6%9C%89gif%E5%8A%A8%E5%9B%BE%E5%B1%95%E7%A4%BA%EF%BC%8C%E4%B8%8B%E9%9D%A2%E6%98%AF%E5%90%8D%E7%A7%B0%E3%80%82">https://huaji8.top/post/live2d-plugin-2.0/中有gif动图展示，下面是名称。</a></p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">live2d-widget-model-chitose</span><br><span class="line">live2d-widget-model-epsilon2_1</span><br><span class="line">live2d-widget-model-gf</span><br><span class="line">live2d-widget-model-haru/01</span><br><span class="line">live2d-widget-model-haru/02</span><br><span class="line">live2d-widget-model-haruto</span><br><span class="line">live2d-widget-model-hibiki</span><br><span class="line">live2d-widget-model-hijiki</span><br><span class="line">live2d-widget-model-izumi</span><br><span class="line">live2d-widget-model-koharu</span><br><span class="line">live2d-widget-model-miku</span><br><span class="line">live2d-widget-model-ni-j</span><br><span class="line">live2d-widget-model-nico</span><br><span class="line">live2d-widget-model-nietzsche</span><br><span class="line">live2d-widget-model-nipsilon</span><br><span class="line">live2d-widget-model-nito</span><br><span class="line">live2d-widget-model-shizuku</span><br><span class="line">live2d-widget-model-tororo</span><br><span class="line">live2d-widget-model-tsumiki</span><br><span class="line">live2d-widget-model-unitychan</span><br><span class="line">live2d-widget-model-wanko</span><br><span class="line">live2d-widget-model-z16</span><br></pre></td></tr></table></figure>
 
@@ -398,7 +249,7 @@
 <h2 id="20、添加文章结束提示语"><a href="#20、添加文章结束提示语" class="headerlink" title="20、添加文章结束提示语"></a>20、添加文章结束提示语</h2><p>将下面代码插入到 <code>themes\next\layout\_macro\post.swig</code> 文件的END POST BODY下面：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% if not is_index %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;text-align:center;color:#ccc;font-size:20px;margin-top:30px&quot;</span>&gt;</span></span><br><span class="line">        -------本 文 结 束 <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-paw&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> 感 谢 您 的 阅 读-------</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/20220210213243.png"  style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165210.png"  style="zoom:67%;" />
 
 <p>注意文档编码应为 UTF-8.</p>
 <h2 id="21、添加本地搜索"><a href="#21、添加本地搜索" class="headerlink" title="21、添加本地搜索"></a>21、添加本地搜索</h2><p>使用 Git Bash 安装搜素插件：</p>
@@ -2915,6 +2766,155 @@
 ]]></content>
       <categories>
         <category>Java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hexo+GitHub搭建个人博客</title>
+    <url>/2022/02/10/Hexo+GitHub%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h1 id="0-初衷"><a href="#0-初衷" class="headerlink" title="0. 初衷"></a>0. 初衷</h1><blockquote>
+<p>将所学知识点记录在博客上是一个很好的习惯。一方面，可以加深自己对技术点的理解，同时方便以后复习回顾；另一方面，可以将自己的见解分享出去，帮助更多的人，更好的发挥开源精神。</p>
+<span id="more"></span>
+
+<p>目前存在许许多多的博客平台，但是很多平台都比较乱，甚至有很多广告，而且有些博客平台也不支持自定义样式。</p>
+<p>如果想要有一个只属于自己的博客，并且页面可以自定义为所喜欢的样式，同时还可以免费白嫖，那该多好 啊！而 <strong>GitHub + Hexo</strong> 就可以实现这些！</p>
+</blockquote>
+<h1 id="1-前置环境"><a href="#1-前置环境" class="headerlink" title="1. 前置环境"></a>1. 前置环境</h1><p>使用 GitHub + Hexo 搭建环境之前，需要提前做以下准备：</p>
+<ul>
+<li><p>注册 GitHub 账号，官网：<a href="https://github.com/">https://github.com/</a></p>
+</li>
+<li><p>安装 Git，官网：<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p>
+<p>安装较为简单，基本流程：下载安装包—-&gt;双击安装包后一路 Next—&gt;cmd 窗口使用 git –version 验证安装是否成功，之后需要做一些初始化设置，比如用户名和邮箱，并于自己的GitHub进行关联，Git学习教程可见<a href="https://www.runoob.com/git/git-tutorial.html">https://www.runoob.com/git/git-tutorial.html</a></p>
+</li>
+<li><p>安装 Node.js，官网：<a href="https://nodejs.org/en/">https://nodejs.org/en/</a></p>
+<p>安装较为简单，基本流程：下载安装包—-&gt;双击安装包后一路 Next —&gt; cmd 窗口分别输入 node -v 和 npm -v 验证安装是否成功。</p>
+</li>
+</ul>
+<h1 id="2-安装-Hexo"><a href="#2-安装-Hexo" class="headerlink" title="2. 安装 Hexo"></a>2. 安装 Hexo</h1><ul>
+<li><p>打开 cmd 命令行窗口，输入命令：<code>npm install -g hexo-cli</code> 进行安装。</p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165047.png" style="zoom: 55%;" />
+</li>
+<li><p>输入 <code>hexo -v</code>，出现版本号，即安装成功！</p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165048.png" style="zoom:51%;" /></li>
+</ul>
+<h1 id="3-本地部署-Hexo"><a href="#3-本地部署-Hexo" class="headerlink" title="3. 本地部署 Hexo"></a>3. 本地部署 Hexo</h1><p>安装完Hexo后，接下来在本地进行部署，部署完成后，Hexo服务器会运行在本地的4000端口上，当我们输入<a><a href="http://localhost:4000/">http://localhost:4000/</a></a> 时就可以在浏览器中看到自己的博客网站了！具体步骤如下：</p>
+<ul>
+<li><p>在任意地方（比如在D盘）新建一个文件夹 Blog（以后发布的文章、主题均在此文件夹中，也可以自定义为其他名称），进入文件夹，在空白处点击右键，选择  <code>Git Bash Here</code></p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165049.png" style="zoom:70%;" />
+</li>
+<li><p>在Git Bash中输入<code>hexo init</code>，初始化 hexo 博客（此时会去 GitHub 中克隆 hexo-starter）</p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165050.png" style="zoom:70%;" />
+</li>
+<li><p>初始化完成后，Blog 文件夹中会多出一些文件</p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165051.png" style="zoom:67%;" />
+</li>
+<li><p>在 Git Bash 中输入<code>hexo g</code>，生成静态文件（也可以使用全命令 hexo generate）</p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165052.png" style="zoom:67%;" />
+</li>
+<li><p>在 Git Bash 中输入<code>hexo s</code>，启动 hexo 服务器（也可以使用全命令 hexo server） </p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165053.png" style="zoom:67%;" />
+</li>
+<li><p>启动 hexo 服务器后，在浏览器输入网址：<a><a href="http://localhost:4000/">http://localhost:4000/</a></a>，出现以下界面，即表明本地 hexo 部署成功！</p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165054.png" style="zoom: 50%;" /></li>
+</ul>
+<h1 id="4-远程部署（GitHub）Hexo"><a href="#4-远程部署（GitHub）Hexo" class="headerlink" title="4. 远程部署（GitHub）Hexo"></a>4. 远程部署（GitHub）Hexo</h1><p>以上我们将 Hexo 部署到了本地，但是存在一个问题，此时仅自己或者是局域网内的小伙伴可以看到此博客网站，其他人并不能在网络上进行访问，为了让所有人都可以访问我们的博客网站，可以借助于 GitHub 实现远程部署。下面是远程部署流程：</p>
+<ul>
+<li><p>在 GitHub 上新建一个仓库，仓库名<strong>必须</strong>为：<code>你的用户名.github.io</code>，比如我的叫：<em>SniperCoding.github.io</em></p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165055.png" style="zoom:67%;" />
+</li>
+<li><p>点击<code>Create repository</code>创建仓库后，复制仓库地址</p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165056.png" style="zoom:65%;" />
+</li>
+<li><p>打开 Blog 文件夹中的 _config.yml 文件，将最下面内容修改如下（其中 repository 填写刚才复制的地址）：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repository:</span> <span class="string">https://github.com/你的用户名/你的用户名.github.io.git</span></span><br></pre></td></tr></table></figure>
+
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165057.png" style="zoom:60%;" />
+</li>
+<li><p>在 Git Bash 中使用 Ctrl+C 退出刚才的本地部署，然后输入命令<code> npm install --save hexo-deployer-git</code>安装 Git 部署插件</p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165058.png" style="zoom:67%;" />
+</li>
+<li><p>接着依次键入</p>
+<ul>
+<li><code>hexo clean</code> (清除缓存文件 (db.json) 和已生成的静态文件 (public)。)</li>
+<li><code>hexo g</code>（hexo generate，生成静态文件）</li>
+<li><code>hexo d</code>（hexo deploy，部署网站到配置文件中指定的仓库，此步需要输入 GitHub 账号密码）</li>
+</ul>
+</li>
+<li><p>在浏览器打开 <code>https://你的用户名.github.io/</code>（比如我的是 <a><a href="https://snipercoding.github.io/">https://snipercoding.github.io/</a></a>），出现以下界面，即表明 Hexo 远程部署成功！</p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165059.png" style="zoom:50%;" /></li>
+</ul>
+<h1 id="5-Hexo目录结构"><a href="#5-Hexo目录结构" class="headerlink" title="5. Hexo目录结构"></a>5. Hexo目录结构</h1><table>
+<thead>
+<tr>
+<th>文件&#x2F;文件夹</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>node_modules</td>
+<td>存放已安装的各类依赖包</td>
+</tr>
+<tr>
+<td><strong>public</strong></td>
+<td>当执行<code>Hexo g</code>命令后会生成此文件夹，实际上会将source文件夹里的Markdown文档，使用当前主题将其转换成HTML文件，我们在博客中看到的就是此页面。（使用 <code>hexo clean</code>会 清除 db.json 和 public 文件夹下的所有文件。）</td>
+</tr>
+<tr>
+<td>scaffolds</td>
+<td>模版 文件夹。当新建文章时，Hexo 会根据 scaffold 来建立文件。包含 page，post，draft三种模板，分别对应 页面、要发布的文章、草稿。</td>
+</tr>
+<tr>
+<td><strong>source</strong></td>
+<td>用户资源文件夹。 其下_posts 文件夹用来存放图片、Markdown 文章等，通过<code>Hexo g</code>命令将文章解析为HTML文件放到public文件夹中</td>
+</tr>
+<tr>
+<td>themes</td>
+<td>主题文件夹。每个主题都会有一个单独文件夹。其默认主题为<a href="https://link.segmentfault.com/?url=https://github.com/hexojs/hexo-theme-landscape">landscape</a>。</td>
+</tr>
+<tr>
+<td><strong>_config.yml</strong></td>
+<td>全局配置文件。可设置包括网站标题、副标题、作者、关键字和描述信息、主题等</td>
+</tr>
+<tr>
+<td><strong>.deploy_git</strong></td>
+<td>当执行<code>hexo d</code>远程部署时会生成此文件夹，实际上会将public文件夹的内容提交到Github后中，内容与public文件夹基本一致（不一致的情况是由于重新生成，但是没有发布站点造成，此时 public 内容新于 .deploy_gi 内容）。</td>
+</tr>
+</tbody></table>
+<h1 id="6-Hexo发布文章"><a href="#6-Hexo发布文章" class="headerlink" title="6. Hexo发布文章"></a>6. Hexo发布文章</h1><p>在 Git Bash 中输入<code>hexo new &quot;文章标题&quot;</code>，会在 &#x2F;source&#x2F;_posts&#x2F; 文件夹中生成<strong>文章标题.md</strong>文件</p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165100.png" style="zoom:70%;" />
+
+<p>打开<strong>文章标题.md</strong>文件，然后编写文章内容（遵循Markdown语法规范）</p>
+<p>之后在 Git Bash 依次键入以下命令远程部署：</p>
+<ul>
+<li><code>hexo clean</code> (清除缓存文件 (db.json) 和已生成的静态文件 (public)。)</li>
+<li><code>hexo g</code>（hexo generate，生成静态文件）</li>
+<li><code>hexo d</code>（hexo deploy，部署网站到配置文件中指定的仓库，此步需要输入github账号密码）</li>
+</ul>
+<p>打开 GitHub网址，即可看到自己新发布的文章.</p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165101.png" style="zoom:35%;" />
+
+<p>注意：文章中使用图片较为特殊，建议大家利用充分利用 GitHub, 将其作为图床，将本地图片转化为url链接，然后在文章中使用，详情可见：<a href="https://snipercoding.github.io/2022/02/10/GitHub+JSDelivr+PicGo+Typora%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A/">GitHub+JSDelivr+PicGo+Typora搭建个人图床</a></p>
+<p>也可以使用下面方式配置图片路径（配置一次就好）：</p>
+<ul>
+<li><p>打开 **_config.yml **配置文件，将 <strong>post_asset_folder</strong> 的值修改为 true</p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165102.png" style="zoom:67%;" />
+</li>
+<li><p>在 Git Bash 中输入命令<code>npm install hexo-asset-image --save</code>安装插件</p>
+<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324165103.png" style="zoom:67%;" />
+</li>
+<li><p>修改 node_modules\hexo-asset-image\index.js 内容</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> cheerio = <span class="built_in">require</span>(<span class="string">&#x27;cheerio&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// http://stackoverflow.com/questions/14480345/how-to-get-the-nth-occurrence-in-a-string</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getPosition</span>(<span class="params">str, m, i</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> str.<span class="title function_">split</span>(m, i).<span class="title function_">join</span>(m).<span class="property">length</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> version = <span class="title class_">String</span>(hexo.<span class="property">version</span>).<span class="title function_">split</span>(<span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">filter</span>.<span class="title function_">register</span>(<span class="string">&#x27;after_post_render&#x27;</span>, <span class="keyword">function</span>(<span class="params">data</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> config = hexo.<span class="property">config</span>;</span><br><span class="line">  <span class="keyword">if</span>(config.<span class="property">post_asset_folder</span>)&#123;</span><br><span class="line">    	<span class="keyword">var</span> link = data.<span class="property">permalink</span>;</span><br><span class="line">	<span class="keyword">if</span>(version.<span class="property">length</span> &gt; <span class="number">0</span> &amp;&amp; <span class="title class_">Number</span>(version[<span class="number">0</span>]) == <span class="number">3</span>)</span><br><span class="line">	   <span class="keyword">var</span> beginPos = <span class="title function_">getPosition</span>(link, <span class="string">&#x27;/&#x27;</span>, <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	   <span class="keyword">var</span> beginPos = <span class="title function_">getPosition</span>(link, <span class="string">&#x27;/&#x27;</span>, <span class="number">3</span>) + <span class="number">1</span>;</span><br><span class="line">	<span class="comment">// In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;.../about/index.html&quot;.</span></span><br><span class="line">	<span class="keyword">var</span> endPos = link.<span class="title function_">lastIndexOf</span>(<span class="string">&#x27;/&#x27;</span>) + <span class="number">1</span>;</span><br><span class="line">    link = link.<span class="title function_">substring</span>(beginPos, endPos);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> toprocess = [<span class="string">&#x27;excerpt&#x27;</span>, <span class="string">&#x27;more&#x27;</span>, <span class="string">&#x27;content&#x27;</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; toprocess.<span class="property">length</span>; i++)&#123;</span><br><span class="line">      <span class="keyword">var</span> key = toprocess[i];</span><br><span class="line"> </span><br><span class="line">      <span class="keyword">var</span> $ = cheerio.<span class="title function_">load</span>(data[key], &#123;</span><br><span class="line">        <span class="attr">ignoreWhitespace</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">xmlMode</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">lowerCaseTags</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">decodeEntities</span>: <span class="literal">false</span></span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      $(<span class="string">&#x27;img&#x27;</span>).<span class="title function_">each</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">if</span> ($(<span class="variable language_">this</span>).<span class="title function_">attr</span>(<span class="string">&#x27;src&#x27;</span>))&#123;</span><br><span class="line">			<span class="comment">// For windows style path, we replace &#x27;\&#x27; to &#x27;/&#x27;.</span></span><br><span class="line">			<span class="keyword">var</span> src = $(<span class="variable language_">this</span>).<span class="title function_">attr</span>(<span class="string">&#x27;src&#x27;</span>).<span class="title function_">replace</span>(<span class="string">&#x27;\\&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">			<span class="keyword">if</span>(!<span class="regexp">/http[s]*.*|\/\/.*/</span>.<span class="title function_">test</span>(src) &amp;&amp;</span><br><span class="line">			   !<span class="regexp">/^\s*\//</span>.<span class="title function_">test</span>(src)) &#123;</span><br><span class="line">			  <span class="comment">// For &quot;about&quot; page, the first part of &quot;src&quot; can&#x27;t be removed.</span></span><br><span class="line">			  <span class="comment">// In addition, to support multi-level local directory.</span></span><br><span class="line">			  <span class="keyword">var</span> linkArray = link.<span class="title function_">split</span>(<span class="string">&#x27;/&#x27;</span>).<span class="title function_">filter</span>(<span class="keyword">function</span>(<span class="params">elem</span>)&#123;</span><br><span class="line">				<span class="keyword">return</span> elem != <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">			  &#125;);</span><br><span class="line">			  <span class="keyword">var</span> srcArray = src.<span class="title function_">split</span>(<span class="string">&#x27;/&#x27;</span>).<span class="title function_">filter</span>(<span class="keyword">function</span>(<span class="params">elem</span>)&#123;</span><br><span class="line">				<span class="keyword">return</span> elem != <span class="string">&#x27;&#x27;</span> &amp;&amp; elem != <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">			  &#125;);</span><br><span class="line">			  <span class="keyword">if</span>(srcArray.<span class="property">length</span> &gt; <span class="number">1</span>)</span><br><span class="line">				srcArray.<span class="title function_">shift</span>();</span><br><span class="line">			  src = srcArray.<span class="title function_">join</span>(<span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">			  $(<span class="variable language_">this</span>).<span class="title function_">attr</span>(<span class="string">&#x27;src&#x27;</span>, config.<span class="property">root</span> + link + src);</span><br><span class="line">			  <span class="variable language_">console</span>.<span class="property">info</span>&amp;&amp;<span class="variable language_">console</span>.<span class="title function_">info</span>(<span class="string">&quot;update link as:--&gt;&quot;</span>+config.<span class="property">root</span> + link + src);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="property">info</span>&amp;&amp;<span class="variable language_">console</span>.<span class="title function_">info</span>(<span class="string">&quot;no src attr, skipped...&quot;</span>);</span><br><span class="line">			<span class="variable language_">console</span>.<span class="property">info</span>&amp;&amp;<span class="variable language_">console</span>.<span class="title function_">info</span>($(<span class="variable language_">this</span>));</span><br><span class="line">		&#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      data[key] = $.<span class="title function_">html</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置完图片路径后，以后在使用 <code>hexo new &quot;文章标题&quot;</code>命令后，会在 &#x2F;source&#x2F;_post 下生成<strong>文章标题.md文件</strong>和<strong>文章标题文件夹</strong>，将所需要的图片放入到标题文件夹中。在文章中可以使用相对路径引用图片资源<code>![](图片相对路径)</code></p>
+<p>比如使用 hexo new “test_article” 创建一篇文章，会在 &#x2F;source&#x2F;_post 生成 <strong>test_article.md 文件</strong>和 <strong>test_article文件夹</strong>，然后将 test.jpg 放入 test_article 文件夹中，在文章中只需要使用<code>![](test_article/test.jpg)</code>即可。</p>
+</li>
+</ul>
+<h1 id="7-Hexo配置站点信息"><a href="#7-Hexo配置站点信息" class="headerlink" title="7. Hexo配置站点信息"></a>7. Hexo配置站点信息</h1><p>打开 _config.yml 文件，按自己需求修改以下内容</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">SniperCoding的个人博客</span>		 			  <span class="comment"># 网站标题</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">&#x27;&#x27;</span>		  						      <span class="comment"># 网站副标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&#x27;请不要假装很努力，因为结果不会陪你演戏&#x27;</span>  <span class="comment"># 网站描述（一般为格言）</span></span><br><span class="line"><span class="attr">keywords:</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">SniperCoding</span>					   		  <span class="comment"># 网站作者</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span>									  <span class="comment"># 网站语言</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">&#x27;Asia/Shanghai&#x27;</span>						  <span class="comment"># 网站时区</span></span><br></pre></td></tr></table></figure>
+
+<p>注意_config.yml 文件的编码格式应为 utf-8，否则会出现中文乱码。</p>
+<p>以上就是使用 <code>GitHub</code> + <code>Hexo</code> 搭建简易个人博客的流程，但是博客默认主题样式不够美观，如果想要自定义博客样式的话，可以自行更换主题，下期我将向大家介绍，如何将Hexo的主题更换为next主题，并对自己的个人博客增加各种功能，比如添加背景、进度条、评论、文章目录等等。</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
       </categories>
   </entry>
 </search>
