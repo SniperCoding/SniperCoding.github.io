@@ -2919,10 +2919,9 @@
       </categories>
   </entry>
   <entry>
-    <title>Mysql基础知识</title>
+    <title>MySQL基础知识</title>
     <url>/2022/02/18/MySQL%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<p>﻿﻿﻿﻿# 一、数据库的好处</p>
-<ol>
+    <content><![CDATA[<h1 id="一、数据库的好处"><a href="#一、数据库的好处" class="headerlink" title="一、数据库的好处"></a>一、数据库的好处</h1><ol>
 <li>持久化数据到本地</li>
 <li>可以实现结构化查询，方便管理</li>
 </ol>
@@ -3511,7 +3510,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select @@tx_isolation; # mysql默认的隔离级别是repeatable read（可重复读）</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Mysql</category>
+        <category>MySQL</category>
       </categories>
   </entry>
 </search>
