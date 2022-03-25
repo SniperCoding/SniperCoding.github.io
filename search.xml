@@ -2926,6 +2926,8 @@
 <li>持久化数据到本地</li>
 <li>可以实现结构化查询，方便管理</li>
 </ol>
+<span id="more"></span>
+
 <h1 id="二、数据库相关概念"><a href="#二、数据库相关概念" class="headerlink" title="二、数据库相关概念"></a>二、数据库相关概念</h1><blockquote>
 <ul>
 <li><strong>数据库 DB（DataBase）</strong>：保存一组有组织的数据的容器。</li>
