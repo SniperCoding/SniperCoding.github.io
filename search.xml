@@ -9581,4 +9581,551 @@
         <category>Java</category>
       </categories>
   </entry>
+  <entry>
+    <title>Java基础必备知识点</title>
+    <url>/2022/02/27/Java%E5%9F%BA%E7%A1%80%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
+    <content><![CDATA[<h2 id="1-Java-语言的特点（一般与-C-对比）"><a href="#1-Java-语言的特点（一般与-C-对比）" class="headerlink" title="1. Java 语言的特点（一般与 C++ 对比）"></a>1. Java 语言的特点（一般与 C++ 对比）</h2><ul>
+<li>Java 具有内存自动分配与垃圾收集技术（C++ 需要程序员自己分配）</li>
+<li>Java 跨平台，即『一次编写，到处运行』。在引入虚拟机之后，Java 在不同平台上运行不需要重新编译。</li>
+<li>Java 是静态语言，强类型语言。</li>
+<li>Java 既不是编译型语言（如 C++），也不是解释性语言（如Python），而是编译与解释共存。<ul>
+<li>编译型语言 会通过编译器将源代码一次性翻译成可被该平台执行的机器码，执行速度比较快，但开发效率比较低。</li>
+<li>解释型语言会通过解释器一句一句的将代码解释为机器代码后再执行，开发效率比较快，但执行速度比较慢。</li>
+<li>Java 程序要经过先编译，后解释两个步骤，由 Java 编写的程序需要先经过编译步骤，生成字节码文件，这种字节码必须由 Java 解释器来解释执行（为了提升效率，会配合 JIT 及时编译期执行）。</li>
+</ul>
+</li>
+<li>Java 不支持类的多继承，而 C++ 支持，但是 Java 允许实现多接口。</li>
+</ul>
+<h2 id="2-JDK、JRE、JVM-之间关系"><a href="#2-JDK、JRE、JVM-之间关系" class="headerlink" title="2. JDK、JRE、JVM 之间关系"></a>2. JDK、JRE、JVM 之间关系</h2><blockquote>
+<p>JVM 是整个 Java 实现跨平台的<strong>最核心</strong>的部分，但是只有 JVM 并不能运行程序；</p>
+<p>如果想要<strong>运行</strong>一个 Java 程序，可以只安装 JRE，不安装 JDK；</p>
+<p>如果想要<strong>开发</strong>一个 Java 程序 ，必须安装 JDK；</p>
+</blockquote>
+<ol>
+<li><p><code>JVM</code>（Java Virtual Machine）Java 虚拟机。主要负责将<strong>字节码文件</strong>解释成具体的平台能够识别的机器指令。</p>
+</li>
+<li><p><code>JRE</code>（Java Runtime Environment）Java 运行环境。JRE &#x3D; JVM +  Java 程序执行所需要的系统类库。系统类库比如：java.lang 包、java.util 包</p>
+</li>
+<li><p><code>JDK</code>（Java Development Kit）Java 开发工具包。JDK &#x3D; JRE + Java 程序所必须的编译、运行等开发工具。</p>
+<p>开发工具比如：用于编译 Java 程序的 javac 命令、用于启动 JVM 运行 Java 程序的 java命令、用于生成文档的 javadoc 命令</p>
+</li>
+</ol>
+<h2 id="3-面向对象和面向过程的区别"><a href="#3-面向对象和面向过程的区别" class="headerlink" title="3. 面向对象和面向过程的区别"></a>3. 面向对象和面向过程的区别</h2><p><strong>面向过程</strong></p>
+<ul>
+<li>一种以过程为中心的编程思想，把问题分解成一个一个步骤，每个步骤用函数实现，然后依次进行调用。</li>
+<li>优点：很明确每一步在做什么，并且执行效率更高。</li>
+<li>缺点：代码重用性低，扩展能力差，后期维护难度比较大</li>
+</ul>
+<p><strong>面向对象</strong></p>
+<ul>
+<li>对问题的每个步骤进行抽象，形成对象，通过对象执行方法的方式组合解决问题。</li>
+<li>优点：开发程序更易维护、易复用、易扩展。</li>
+</ul>
+<h2 id="4-面向对象三大特性是什么【⭐⭐⭐⭐】"><a href="#4-面向对象三大特性是什么【⭐⭐⭐⭐】" class="headerlink" title="4. 面向对象三大特性是什么【⭐⭐⭐⭐】"></a>4. 面向对象三大特性是什么【⭐⭐⭐⭐】</h2><ul>
+<li><p><code>封装</code></p>
+<blockquote>
+<p>封装是指把一个对象的状态信息隐藏在对象内部，不允许外部对象直接访问对象的内部信息。通过提供一些可以被外界访问的方法来对属性进行操作。</p>
+<ul>
+<li>良好的封装能够减少耦合。</li>
+<li>隐藏对象内部的复杂性，只对外公开简单的接口。便于外界调用，从而提高系统的可扩展性、可维护性以及安全性。</li>
+<li>可以对成员变量进行更精确的控制。（使用者对类内部定义的属性直接操作可能会导致数据的错误、混乱或安全性问题。）</li>
+</ul>
+</blockquote>
+<p>功能：信息隐藏</p>
+</li>
+<li><p><code>继承</code></p>
+<blockquote>
+<p>继承是使用已存在的类(父类)作为基础建立新类(子类)的技术，子类继承父类的属性和行为，使得子类对象具有与父类相同的属性、相同的行为。子类可以直接访问父类中的非私有的属性和行为。</p>
+</blockquote>
+<p>功能：代码复用</p>
+</li>
+<li><p><code>多态</code></p>
+<blockquote>
+<p>同一行为发生在不同的对象上会产生不同的结果。（同一行为，具有多个不同表现形式）</p>
+<p>程序中定义的引用变量所指向的具体类型和通过该引用变量发出的方法调用在编程时并不确定，而是在程序运行期间才确定，即一个引用变量倒底会指向哪个类的实例对象，该引用变量发出的方法调用到底是哪个类中实现的方法，必须在由程序运行期间才能决定。</p>
+</blockquote>
+<p>功能：提高了代码的扩展性</p>
+<p>使用多态的前提：</p>
+<ul>
+<li>① 存在继承或者实现关系</li>
+<li>② 子类覆盖（重写）父类方法</li>
+<li>③ 向上转型（父类引用指向子类对象）</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-Java-基础数据类型"><a href="#5-Java-基础数据类型" class="headerlink" title="5. Java 基础数据类型"></a>5. Java 基础数据类型</h2><p>Java 存在 8 种基本数据类型，共分为四类：</p>
+<ul>
+<li>整数型（byte、short、int、long）</li>
+<li>浮点型（float double）</li>
+<li>字符型（char）</li>
+<li>布尔型（boolean）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">关键字</th>
+<th align="center">内存占用&#x2F;字节</th>
+<th align="center">取值范围</th>
+<th align="center">最小值符号</th>
+<th align="center">最大值符号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">字节型</td>
+<td align="center">byte</td>
+<td align="center">1</td>
+<td align="center">-128 ~ +127</td>
+<td align="center">Byte.MIN_VALUE</td>
+<td align="center">Byte.MAX_VALUE</td>
+</tr>
+<tr>
+<td align="center">短整型</td>
+<td align="center">short</td>
+<td align="center">2</td>
+<td align="center">-32768 ~ +32767</td>
+<td align="center">Short.MIN_VALUE</td>
+<td align="center">Short.MAX_VALUE</td>
+</tr>
+<tr>
+<td align="center">整型</td>
+<td align="center">int</td>
+<td align="center">4</td>
+<td align="center">-2^31 ~ 2^31-1（超过20亿）</td>
+<td align="center">Integer.MIN_VALUE</td>
+<td align="center">Integer.MAX_VALUE</td>
+</tr>
+<tr>
+<td align="center">长整型</td>
+<td align="center">long</td>
+<td align="center">8</td>
+<td align="center">-2^63 ~ 2^63-1</td>
+<td align="center">Long.MIN_VALUE</td>
+<td align="center">Long.MAX_VALUE</td>
+</tr>
+<tr>
+<td align="center">单精度浮点型</td>
+<td align="center">float</td>
+<td align="center">4</td>
+<td align="center">1.4E-45 ~ 3.4028235E38（有效位数6~7位）</td>
+<td align="center">Float.MIN_VALUE</td>
+<td align="center">Float.MAX_VALUE</td>
+</tr>
+<tr>
+<td align="center">双精度浮点型</td>
+<td align="center">double</td>
+<td align="center">8</td>
+<td align="center">4.9E-324~1.7977E+308（有效位数15位）</td>
+<td align="center">Double.MIN_VALUE</td>
+<td align="center">Double.MAX_VALUE</td>
+</tr>
+<tr>
+<td align="center">字符型</td>
+<td align="center">char</td>
+<td align="center">2</td>
+<td align="center">0 ~ 65535</td>
+<td align="center">Character.MIN_VALUE</td>
+<td align="center">Character.MAX_VALUE</td>
+</tr>
+<tr>
+<td align="center">布尔型</td>
+<td align="center">Boolean</td>
+<td align="center">1</td>
+<td align="center">true、false</td>
+<td align="center">*</td>
+<td align="center">*</td>
+</tr>
+</tbody></table>
+<p>注意：<strong>Java 没有任何无符号 (unsigned) 形式的 int、long、short 或 byte 类型，但可以通过其包装类转换得到。</strong></p>
+<h2 id="6-x3D-x3D-和-equals-的区别"><a href="#6-x3D-x3D-和-equals-的区别" class="headerlink" title="6. &#x3D;&#x3D; 和 equals 的区别"></a>6. &#x3D;&#x3D; 和 equals 的区别</h2><ul>
+<li><strong>&#x3D;&#x3D;</strong><ul>
+<li>对于基本数据类型，&#x3D;&#x3D; 比较的是数值是否相等</li>
+<li>对于引用数据类型，&#x3D;&#x3D; 比较的是引用（地址）是否相等</li>
+</ul>
+</li>
+<li><strong>equals</strong><ul>
+<li>equals 不能比较基本数据类型是否相等（可以转化为对应的包装类后再进行比较）</li>
+<li>Object 类中的 equals 的实现用的是 <code>this==obj</code>，而所有引用数据类型均继承了 Object 类，因而<strong>默认情况下，equals 方法的作用和 =&#x3D; 比较引入数据类型的规则一致，均比较的引用（地址）是否相等。</strong></li>
+<li>通常情况下，我们想要比较的是数值（属性）是否相等，因而会对 equals 进行重写，满足自身需求，像String、Date、File、包装类等都重写了 Object 类中的 equals() 方法。重写以后，比较的不是两个引用的地址是否相同，而是比较两个对象的”实体内容”是否相同。。</li>
+<li>重写 equals 方法的建议（Java核心技术，卷11）<ul>
+<li>检测 this 与 otherObject 是否相等，if(this &#x3D;&#x3D; otherObject) return true;</li>
+<li>检测 otherObject 是否为 null，if(otherObject &#x3D;&#x3D; null) return false;</li>
+<li>判断 this 和 otherObject 是否属于相同类 if(getClass() !&#x3D; otherObject.getClass()) return fasle;</li>
+<li>根据相等性概念的要求比较字段。使用 &#x3D;&#x3D; 比较基本数据类型，使用 Objects.equals(本字段,所比较字段)比较对象字段。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-重写-equals-时为什么要重写-hashCode-【⭐⭐⭐⭐】"><a href="#7-重写-equals-时为什么要重写-hashCode-【⭐⭐⭐⭐】" class="headerlink" title="7. 重写 equals() 时为什么要重写 hashCode() 【⭐⭐⭐⭐】"></a>7. 重写 equals() 时为什么要重写 hashCode() 【⭐⭐⭐⭐】</h2><p><code>equals</code> 和<code> hashCode</code> 都是在 Object 中存在的方法，默认情况下：</p>
+<ul>
+<li><code>equals</code> 方法的作用和 =&#x3D; 比较引入数据类型的规则一致，均比较的引用（地址）是否相等。</li>
+<li><code>hashCode </code>方法会返回根据对象内存地址做相应转化得到的哈希值。</li>
+</ul>
+<p>在 HashSet 和 HashMap 等集合中，为了提升增删改查的效率，在存入数据时，一般首先根据对象的 hashcode 方法计算对象应该存储的位置，然后再根据 equals 方法判断同一个位置上的对象是否相等。</p>
+<p>如果我们重写了 equals 方法，比较对象的属性是否相等，此时如果不重写 hashcode 方法，那么可能会出现以下情况，我们 new 了两个属性值完全相等的对象 s1 和 s2</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Student</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;张三&quot;</span>,<span class="number">23</span>);</span><br><span class="line"><span class="type">Student</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;张三&quot;</span>,<span class="number">23</span>);</span><br></pre></td></tr></table></figure>
+
+<p>此时 s1 和 s2 通过 equal 方法判断是相等的，但是通过 hashcode 方法判断可能是不相等的（因为 s1 和 s2 的地址不相同）。在 set 集合中添加 s1 和 s2 时，我们希望得到的结果是两个对象通过<strong>去重</strong>得到唯一结果，但可能会出现错误。比如：</p>
+<ul>
+<li>我们首先在 set 集合 中添加 s1 ，假设通过 hashcode 计算出的索引位置为 1，我们将 s1 存放在 1 号位置。</li>
+<li>而再向  set 集合 中添加 s2 时，通过 hashcode 计算的索引位置可能是 2 ，我们将 s2 存放在 2 号位置。</li>
+<li>此时就出现了问题，本来 equals 判断相等的两个对象竟然都被存放到了 set 集合中！这是我们不希望看到的！</li>
+</ul>
+<p>因此当我们重写 equals() 方法时，最好也要重写一下 hashCode()。</p>
+<p>一般规定：</p>
+<ul>
+<li><strong>equals 相等，hashCode 应该也相等。</strong></li>
+<li><strong>hashCode 相等，equals 不一定相等。</strong></li>
+</ul>
+<h2 id="8-Java-方法参数是值传递还是引用传递？"><a href="#8-Java-方法参数是值传递还是引用传递？" class="headerlink" title="8. Java 方法参数是值传递还是引用传递？"></a>8. Java 方法参数是值传递还是引用传递？</h2><p>值传递：是指在调用函数时将实际参数<u>复制</u>一份传递到函数中，这样在方法中如果对<u>参数</u>进行修改，将不会影响到实际参数。</p>
+<p>引用传递：是指在调用函数时将实际参数的地址<u>直接</u>传递到函数中，那么在方法中对<u>参数</u>所进行的修改，将影响到实际参数。</p>
+<p>Java 里方法的参数传递方式只有一种：<strong>值传递</strong>。（即将实际参数值的副本传入方法内，而<strong>参数本身不受影响</strong>。）</p>
+<ul>
+<li>如果形参是基本数据类型，传递的是基本类型的字面量值的拷贝；</li>
+<li>如果形参是引用数据类型，传递的是该参量所引用的对象在堆中地址值的拷贝。</li>
+</ul>
+<h2 id="9-静态变量、成员变量、局部变量的区别"><a href="#9-静态变量、成员变量、局部变量的区别" class="headerlink" title="9.  静态变量、成员变量、局部变量的区别"></a>9.  静态变量、成员变量、局部变量的区别</h2><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">在类中的位置</th>
+<th align="center">作用范围</th>
+<th align="center">初始化值</th>
+<th align="center">修饰符</th>
+<th align="center">内存位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">静态变量</td>
+<td align="center">类中，方法外</td>
+<td align="center">类中</td>
+<td align="center">有默认值（数值为 0，布尔值为 false，引用为null）</td>
+<td align="center">public、private、final 等</td>
+<td align="center">方法区</td>
+</tr>
+<tr>
+<td align="center">普通成员变量</td>
+<td align="center">类中，方法外</td>
+<td align="center">类中</td>
+<td align="center">有默认值（数值为 0，布尔值为 false，引用为 null）</td>
+<td align="center">public、private、final 等</td>
+<td align="center">堆区</td>
+</tr>
+<tr>
+<td align="center">局部变量</td>
+<td align="center">方法中或者方法声明上 (形式参数)</td>
+<td align="center">方法中</td>
+<td align="center">没有默认值。必须先定义，赋值，最后使用</td>
+<td align="center">不能用权限修饰符修饰，可以用final修饰</td>
+<td align="center">栈区</td>
+</tr>
+</tbody></table>
+<h2 id="10-Java-权限修饰符区别"><a href="#10-Java-权限修饰符区别" class="headerlink" title="10. Java 权限修饰符区别"></a>10. Java 权限修饰符区别</h2><p>Java 权限修饰符 public、protected、default(缺省)、private 置于类的成员定义前，用来限定对象对该类成员的访问权限。</p>
+<ul>
+<li><strong>public</strong> : 对所有类可见。使用对象：类、接口、变量、方法</li>
+<li><strong>default</strong> (即默认，什么也不写）: 在同一包内可见，不使用任何修饰符。使用对象：类、接口、变量、方法。</li>
+<li><strong>private</strong> : 在同一类内可见。使用对象：变量、方法。 <strong>注意：不能修饰类（外部类）</strong></li>
+<li><strong>protected</strong> : 对同一包内的类和所有子类可见。使用对象：变量、方法。 <strong>注意：不能修饰类（外部类）</strong>。</li>
+</ul>
+<p>以下是访问控制级别：</p>
+<p>public &gt; protected &gt; (default) &gt; private</p>
+<table>
+<thead>
+<tr>
+<th align="center">修饰符</th>
+<th align="center">同一个类</th>
+<th align="center">同一个包</th>
+<th align="center">不同包的子类</th>
+<th align="center">同一个工程</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">public</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">protected</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">default（缺省）</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">private</td>
+<td align="center">√</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>注意：对于 class 的权限修饰只可以用 public 和 default(缺省)。</p>
+<h2 id="11-重写和重载的区别"><a href="#11-重写和重载的区别" class="headerlink" title="11. 重写和重载的区别"></a>11. 重写和重载的区别</h2><p>重载：同一个类中不同方法具有相同的名字，但是参数不一样，即参数的名称和参数的类型不一样。同类不同参。</p>
+<p>重写：子父类的，即子类与父类具有相同的方法名字还有参数参数相同和相同的返回类型。即同名同参同类型。</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">参数列表</th>
+<th align="center">是否有继承关系</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">重载（overload）</td>
+<td align="center">必须不同</td>
+<td align="center">无继承关系，在同一个类中</td>
+</tr>
+<tr>
+<td align="center">重写（override）</td>
+<td align="center">必须相同</td>
+<td align="center">有继承关系，在不同类中</td>
+</tr>
+</tbody></table>
+<h2 id="12-自动装箱与自动拆箱"><a href="#12-自动装箱与自动拆箱" class="headerlink" title="12. 自动装箱与自动拆箱"></a>12. 自动装箱与自动拆箱</h2><p>为了使基本数据类型的变量具有类的特征，Java 引入了包装类的概念。</p>
+<p>自动装箱：将基本数据类型自动转换成对应的包装类。</p>
+<p>自动拆箱：将包装类自动转换成对应的基本数据类型。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 基本数据类型----&gt;包装对象【装箱】</span></span><br><span class="line">	<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">	<span class="type">Integer</span> <span class="variable">i1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(i);<span class="comment">// 通过包装类的构造方法实现</span></span><br><span class="line">	<span class="type">Integer</span> <span class="variable">i2</span> <span class="operator">=</span> Integer.valueOf(i);<span class="comment">// 使用包装类中的valueOf方法</span></span><br><span class="line"><span class="comment">// 包装对象----&gt;基本数据类型【拆箱】</span></span><br><span class="line">	<span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> i1.intValue();<span class="comment">// 调用包装类的.xxxValue()方法：</span></span><br><span class="line"><span class="comment">// 自动装箱与自动拆箱：从Java 1.5开始，【基本类型与包装类的装箱、拆箱动作可以自动完成(但类型必须匹配)】例如：</span></span><br><span class="line">	<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">	<span class="type">Integer</span> <span class="variable">i1</span> <span class="operator">=</span> i;<span class="comment">//自动装箱。相当于Integer i = Integer.valueOf(i);</span></span><br><span class="line">	<span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> i1; <span class="comment">//自动拆箱。 相当于 int num = i1.intValue();</span></span><br></pre></td></tr></table></figure>
+
+<p>特殊：在 Java 1.5 后，为了提升性能， Integer 类使用了缓存机制，<strong>在自动装箱时，如果数值在 -128 ~ +127 之间，会使用缓存中的对象。</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 自动装箱，数值在缓存区间内</span></span><br><span class="line"><span class="type">Integer</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line"><span class="type">Integer</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line">System.out.print(i == j); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 自动装箱，数值不在缓存区间内</span></span><br><span class="line"><span class="type">Integer</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">128</span>;</span><br><span class="line"><span class="type">Integer</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">128</span>;</span><br><span class="line">System.out.print(i == j); <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接 new 对象，不使用缓存</span></span><br><span class="line"><span class="type">Integer</span> <span class="variable">i</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">100</span>);</span><br><span class="line"><span class="type">Integer</span> <span class="variable">j</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">100</span>);</span><br><span class="line">System.out.print(i == j); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="13-常见集合以及其关系"><a href="#13-常见集合以及其关系" class="headerlink" title="13. 常见集合以及其关系"></a>13. 常见集合以及其关系</h2><p><img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/Java%E9%9D%A2%E8%AF%95%E5%85%B8%E4%B8%AD%E5%85%B8/Java%E5%9F%BA%E7%A1%80/20220417221239.png" alt="image-20220417221037763"></p>
+<p><code>Collection</code> 接口：单列数据，定义了存取一组对象的方法的集合，它有两个重要的子接口：</p>
+<ul>
+<li>List：元素有序且可重复的集合，主要实现类有 <strong>ArrayList</strong>  、<strong>LinkedList</strong> 和 Vector 。<ul>
+<li><code>ArrayList</code>：作为 List 接口的主要实现类；线程不安全的，效率高；底层使用 Object[] elementData 存储</li>
+<li><code>LinkedList</code>：对于频繁的插入、删除操作，使用此类效率比 ArrayList 高；底层使用双向链表存储。</li>
+<li><code>Vector</code>：作为 List 接口的古老实现类；线程安全的，效率低；底层使用 Object[] elementData 存储。</li>
+</ul>
+</li>
+<li>Set： 元素无序且不可重复的集合，主要实现类有 <strong>HashSet</strong> 、LinkedHashSet 和 TreeSet  。<ul>
+<li><code>HashSet</code>：作为 Set 接口的主要实现类；线程不安全的；可以存储 null 值。</li>
+<li><code>LinkedHashSet</code>：作为 HashSet 的子类；遍历其内部数据时，可以按照添加的顺序遍历。</li>
+<li><code>TreeSet</code>：可以照添加对象的指定属性，进行排序。</li>
+</ul>
+</li>
+</ul>
+<p><code>Map</code> 接口：双列数据，保存具有映射关系“key-value”的集合，主要实现类有 <strong>HashMap</strong>，LinkedHashMap，TreeMap。</p>
+<ul>
+<li><code>HashMap</code>：作为 Map 的主要实现类；线程不安全的，效率高；可以存储 null 的 key 和 value</li>
+<li><code>LinkedHashMap</code>：LinkedHashMap 是 HashMap 的子类。在 HashMap 存储结构的基础上，使用了一对双向链表来记录添加元素的顺序，与 LinkedHashSet 类似，LinkedHashMap 可以维护 Map 的迭代顺序：迭代顺序与 Key-Value 对的插入顺序一致。</li>
+<li><code>TreeMap</code>： 对添加的 key-value 对进行排序，实现排序遍历。考虑 key 的自然排序或定制排序，底层使用红黑树。</li>
+<li><code>Hashtable</code>：作为古老的实现类；线程安全的，效率低；不能存储 null 的 key 和 value，Hashtable 实现原理、功能和 HashMap 相同。</li>
+</ul>
+<h2 id="14-ArrayList-和-LinkedList-的区别【⭐⭐⭐⭐】"><a href="#14-ArrayList-和-LinkedList-的区别【⭐⭐⭐⭐】" class="headerlink" title="14. ArrayList 和 LinkedList 的区别【⭐⭐⭐⭐】"></a>14. ArrayList 和 LinkedList 的区别【⭐⭐⭐⭐】</h2><ul>
+<li><strong>ArrayList</strong><ul>
+<li>底层由数组实现，可动态扩容，需要连续内存</li>
+<li>有索引，因此查询效率高</li>
+<li>增加或删除尾部元素效率高，但是增加或删除元素到其他位置，需要将数组批量移动，效率不高。</li>
+</ul>
+</li>
+<li><strong>LinkedList</strong><ul>
+<li>底层由双链表实现，不需要连续内存</li>
+<li>没有索引，查询需要遍历链表，效率低</li>
+<li>增加或删除尾部或头部元素效率高，但是增加或删除元素到其他位置，需要首先遍历链表，找到元素位置，效率较低（虽然找到后插入&#x2F;删除很快）</li>
+</ul>
+</li>
+</ul>
+<h2 id="15-HashMap-底层-【⭐⭐⭐⭐⭐】"><a href="#15-HashMap-底层-【⭐⭐⭐⭐⭐】" class="headerlink" title="15. HashMap 底层 【⭐⭐⭐⭐⭐】"></a>15. HashMap 底层 【⭐⭐⭐⭐⭐】</h2><ul>
+<li>JDK1.7 数组 + 链表</li>
+<li>JDK1.8 数组 + （链表 | 红黑树）</li>
+</ul>
+<p>Put 操作流程</p>
+<ol>
+<li>HashMap 是懒惰创建数组的，首次使用才创建数组</li>
+<li><u>计算索引</u>（桶下标），先调用 HashMap 的 hash() 方法，在计算对象的 hashCode()后进行二次哈希。二次 hash() 是为了综合高位数据，让哈希分布更为均匀。</li>
+<li>如果桶下标还<u>没被占用</u>，创建 Node 占位返回。</li>
+<li>如果桶下标已经<u>被占用</u><ol>
+<li>已经是 TreeNode 走红黑树的添加或更新逻辑。</li>
+<li>是普通 Node，走链表的添加或更新逻辑，如果链表长度超过树化阈值，走树化逻辑。</li>
+</ol>
+</li>
+<li>返回前检查容量是否超过阈值，一旦超过进行扩容</li>
+</ol>
+<p><strong>数组容量为何是 2 的 n 次幂</strong></p>
+<ol>
+<li><u>计算索引时效率更高</u>：如果是 2 的 n 次幂 <strong>可以使用按位与运算代替取模</strong></li>
+<li><u>扩容时重新计算索引效率更高</u>： hashcode 值 &amp; oldCap &#x3D;&#x3D; 0 的元素留在原来位置 ，否则新位置 &#x3D; 旧位置 + oldCap。等于0时，hash % oldCap &#x3D;&#x3D; hash % 2*oldCap</li>
+</ol>
+<p><strong>树化规则</strong></p>
+<ul>
+<li><code>链表长度 &gt; 8  &amp;&amp; 数组容量 &gt;=64</code></li>
+<li><strong>当链表长度超过树化阈值 8 时，先尝试扩容来减少链表长度，如果数组容量已经 &gt;&#x3D;64，才会进行树化</strong></li>
+<li>为什么选择 8 呢？<strong>hash 值如果足够随机，则在 hash 表内按泊松分布，在负载因子 0.75 的情况下，长度超过 8 的链表出现概率是 0.00000006，树化阈值选择 8 就是为了让树化几率足够小</strong>，当链表比较短的时候，维护比红黑树更简单方便，并且TreeNode 占用空间也比普通 Node 的大，如非必要，尽量还是使用链表，而不是直接就使用红黑树，只有当链表长度大于 8 时才会树化。</li>
+</ul>
+<p><strong>退化规则</strong></p>
+<ul>
+<li><p>情况1：在<strong>扩容时</strong>如果<strong>拆分树</strong>时，如果拆分的树<code>树中元素个数 &lt;= 6 </code>则会退化链表，否则不会退化。</p>
+</li>
+<li><p>情况2：remove 树节点时，若 root、root.left、root.right、root.left.left 有一个为 null ，也会退化为链表</p>
+</li>
+</ul>
+<p><strong>扩容（加载）因子为何默认是 0.75f</strong></p>
+<ol>
+<li>在空间占用与查询时间之间取得较好的权衡</li>
+<li>大于这个值，空间节省了，但链表就会比较长影响性能</li>
+<li>小于这个值，冲突减少了，但扩容就会更频繁，空间占用也更多</li>
+</ol>
+<p><strong>1.7 与 1.8 的区别</strong></p>
+<ol>
+<li><p>链表插入节点时，1.7 是头插法，1.8 是尾插法</p>
+</li>
+<li><p>1.7 是大于等于阈值且当前要插入的元素没有空位时才扩容（也就是如果当前要加入的元素正好有空位可以放下，那就不必扩容），而 1.8 是大于阈值就扩容</p>
+</li>
+<li><p>1.8 在扩容计算 Node 索引时，会优化</p>
+</li>
+</ol>
+<p><strong>并发问题</strong></p>
+<ul>
+<li><strong>扩容死链（1.7 会存在）</strong>，由头插法引起的。</li>
+<li><strong>数据错乱（1.7，1.8 都会存在）</strong></li>
+</ul>
+<h2 id="16-HashMap、HashTable、以及-ConcurrentHashMap-的区别【⭐⭐⭐⭐⭐】"><a href="#16-HashMap、HashTable、以及-ConcurrentHashMap-的区别【⭐⭐⭐⭐⭐】" class="headerlink" title="16.HashMap、HashTable、以及 ConcurrentHashMap 的区别【⭐⭐⭐⭐⭐】"></a>16.HashMap、HashTable、以及 ConcurrentHashMap 的区别【⭐⭐⭐⭐⭐】</h2><ul>
+<li><code>HashMap </code><ul>
+<li>线程不安全，效率高 </li>
+<li>可以存储 null 的 key 和 value，但 null 作为键只能有一个，null 作为值可以有多个；</li>
+<li>在 1.8 的时候更改底层为『数组 + 链表 + 红黑树』</li>
+</ul>
+</li>
+<li><code>HashTable</code> <ul>
+<li>线程安全（内部的方法基本都经过 synchronized 修饰），古老的实现类，效率低，实现原理、功能和 HashMap 相同，基本被淘汰。</li>
+<li>不允许有 null 键和 null 值，否则会抛出空指针异常</li>
+<li>底层为『数组 + 链表』</li>
+</ul>
+</li>
+<li><code>ConcurrentHashMap</code> <ul>
+<li>线程安全</li>
+<li>使用 synchronized 和 CAS 来操作。</li>
+<li>在 1.8 的时候更改底层为『数组 + 链表 + 红黑树』</li>
+</ul>
+</li>
+</ul>
+<h2 id="17-this-和-super-的区别"><a href="#17-this-和-super-的区别" class="headerlink" title="17. this 和 super 的区别"></a>17. this 和 super 的区别</h2><table>
+<thead>
+<tr>
+<th align="center">关键字</th>
+<th align="center">访问成员变量</th>
+<th align="center">调用成员方法</th>
+<th>调用构造方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">this</td>
+<td align="center">访问本类中的成员变量，如果本类没有，则从父类中继续查找</td>
+<td align="center">访问本类中的成员方法，如果本类没有，则从父类中继续查找</td>
+<td>访问本类中的构造方法</td>
+</tr>
+<tr>
+<td align="center">super</td>
+<td align="center">直接访问父类中的成员变量</td>
+<td align="center">直接访问父类中的成员方法</td>
+<td>访问父类中的构造方法</td>
+</tr>
+</tbody></table>
+<h2 id="18-抽象类与接口的对比"><a href="#18-抽象类与接口的对比" class="headerlink" title="18. 抽象类与接口的对比"></a>18. 抽象类与接口的对比</h2><ul>
+<li>相同点<ul>
+<li>均不能被实例化。</li>
+<li>都可以包含抽象方法。</li>
+<li>接口的实现类或抽象类的子类都只有实现了接口或抽象类中的方法后才能实例化。</li>
+</ul>
+</li>
+<li>不同点<ul>
+<li>抽象类中有构造方法，而接口中没有。</li>
+<li>抽象类不能多继承，而接口可以。</li>
+<li>接口中的变量必须有static、final修饰，实际是一个常量，必须赋初值，而抽象类可以任意。</li>
+</ul>
+</li>
+</ul>
+<h2 id="19-泛型与类型擦除"><a href="#19-泛型与类型擦除" class="headerlink" title="19. 泛型与类型擦除"></a>19. 泛型与类型擦除</h2><p>泛型是 JDK1.5 的一个新特性，<strong>就是将类型参数化，其在编译时才确定具体的参数。</strong>这种参数类型可以用在类、接口和方法的创建中，分别称为泛型类、泛型接口、泛型方法。</p>
+<p>使用泛型可以提高 Java 程序的类型安全，在编译前就能检测是否存在 ClassCastException 异常，并在代码执行时不需要每次使用时自己进行强制类型转换，同时提升了代码的可读性。</p>
+<p>泛型是通过<strong>类型擦除</strong>来实现的，<u>编译器在编译时擦除了所有类型相关的信息，在运行时不存在任何类型相关的信息</u>，也就是说：<strong>泛型只存在于编译阶段，而不存在于运行阶段。</strong>使用类型擦除的主要目的是确保能和 JDK1.5 之前的代码进行兼容，并且实现简单，几乎不需要更改 JVM代码。</p>
+<h2 id="20-String、StringBuffer-和-StringBuilder-的区别【⭐⭐⭐⭐】"><a href="#20-String、StringBuffer-和-StringBuilder-的区别【⭐⭐⭐⭐】" class="headerlink" title="20. String、StringBuffer 和 StringBuilder 的区别【⭐⭐⭐⭐】"></a>20. String、StringBuffer 和 StringBuilder 的区别【⭐⭐⭐⭐】</h2><p><code>String</code>：不可变、线程不安全</p>
+<p><code>StringBuilder</code>：可变、线程不安全</p>
+<p><code>StringBuffer</code>：可变、线程安全</p>
+<p>性能：<strong>String &lt; StringBuffer &lt; StringBuilder</strong></p>
+<h2 id="21-为什么-String-设置为不可变的"><a href="#21-为什么-String-设置为不可变的" class="headerlink" title="21. 为什么 String 设置为不可变的"></a>21. 为什么 String 设置为不可变的</h2><p>String 为什么不可变？</p>
+<ol>
+<li>保存字符串的数组被 <code>final</code> 修饰且为私有的，并且<code>String</code> 类没有提供&#x2F;暴露修改这个字符串的方法。</li>
+<li><code>String</code> 类被 <code>final</code> 修饰导致其不能被继承，进而避免了子类破坏 <code>String</code> 不可变。</li>
+</ol>
+<p>不可变的好处？</p>
+<ol>
+<li><p>可以缓存 hash 值</p>
+<p>因为 String 的 hash 值经常被使用，例如 String 用做 HashMap 的 key。不可变的特性可以使得 hash 值也不可变，因此只需要进行一次计算。</p>
+</li>
+<li><p>字符串常量池的需要</p>
+<p>如果一个 String 对象已经被创建过了，那么就会从字符串常量池中取得引用。只有 String 是不可变的，才可能使用字符串常量池，如果字符串是可变的，某一个字符串变量改变了其值，那么其指向的变量的值也会改变，字符串常量池也就不是『常量』池了，就成了变量池。</p>
+</li>
+<li><p>安全性</p>
+<p>String 经常作为参数，String 不可变性可以保证参数不可变。例如在作为网络连接参数的情况下如果 String 是可变的，那么在网络连接过程中，String 被改变，改变 String 的那一方以为现在连接的是其它主机，而实际情况却不一定是。</p>
+</li>
+<li><p><strong>线程安全</strong></p>
+<p>String 不可变性天生具备线程安全，可以在多个线程中安全地使用。</p>
+</li>
+</ol>
+<h2 id="22-Java-异常分类"><a href="#22-Java-异常分类" class="headerlink" title="22. Java 异常分类"></a>22. Java 异常分类</h2><img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/Java面试典中典/Java基础/20220407230808.png" alt="image-20220401190315767" style="zoom:67%;" />
+
+<p><code>Throwable</code>：Throwable 类是 Java 语言中所有错误或异常的超类。类中常用方法有：</p>
+<ul>
+<li><p><u>public void printStackTrace()</u>：打印异常的详细信息。</p>
+<p><em>包含了异常的类型,异常的原因,还包括异常出现的位置,在开发和调试阶段,都得使用printStackTrace。</em></p>
+</li>
+<li><p><u>public String getMessage()</u> ：获取发生异常的原因。</p>
+<p><em>提示给用户的时候,就提示错误原因。</em></p>
+</li>
+</ul>
+<p><code>Error</code>：程序无法处理的错误，表示运行应用程序中较严重问题。大多数错误与代码编写者执行的操作无关，而表示代码运行时 JVM（Java 虚拟机）出现的问题。比如栈溢出、堆溢出等错误。</p>
+<p><code>Exception</code>：程序本身可以捕获并且可以处理的异常。可以分为两大类：</p>
+<ul>
+<li><u>非受检异常（运行时异常）</u>：指 RuntimeException 类及其子类异常，编译器不会检查此类异常，并且不要求处理异常。程序中可以选择捕获处理，也可以不处理。这些异常一般是由程序逻辑错误引起的，程序应该从逻辑角度尽可能避免这类异常的发生。比如数组索引越界异常，空指针异常等等。</li>
+<li><u>受检异常（编译时异常</u>）：是 RuntimeException 以外的异常，类型上都属于Exception类及其子类。从程序语法角度讲是必须进行处理的异常，如果不处理，程序就不能编译通过。如IOException、SQLException等以及用户自定义的Exception异常。</li>
+</ul>
+<h2 id="23-Java-常见异常"><a href="#23-Java-常见异常" class="headerlink" title="23. Java 常见异常"></a>23. Java 常见异常</h2><ul>
+<li><code>java.lang.ArrayIndexOutOfBoundsException</code> 数组索引越界异常。</li>
+<li><code>java.lang.NullPointerException   </code> 空指针异常</li>
+<li><code>java.lang.ClassCastException   </code> 类型转换异常</li>
+<li><code>java.lang.ArithmeticException</code> 算术异常</li>
+<li><code>java.lang.NumberFormatException</code> 数字格式异常</li>
+</ul>
+<h2 id="24-throw-和-throws-的区别"><a href="#24-throw-和-throws-的区别" class="headerlink" title="24. throw 和 throws 的区别"></a>24. throw 和 throws 的区别</h2><ul>
+<li><code>throw </code>表示抛出一个异常类的对象，生成异常对象的过程。声明在方法体内。可以抛出多个异常，用来标识该方法可能抛出的异常列表。</li>
+<li><code>throws</code> 属于异常处理的一种方式，声明在方法的声明处，只能用于抛出一种异常，用来抛出方法或代码块中的异常。</li>
+</ul>
+<h2 id="25-深拷贝和浅拷贝【⭐】"><a href="#25-深拷贝和浅拷贝【⭐】" class="headerlink" title="25. 深拷贝和浅拷贝【⭐】"></a>25. 深拷贝和浅拷贝【⭐】</h2><ul>
+<li><p><strong>浅拷贝</strong>：浅拷贝会在堆上<strong>创建一个新的对象</strong>（区别于引用拷贝的一点），<strong>不过，如果原对象内部的属性是引用类型的话，浅拷贝会直接复制内部对象的引用地址</strong>，也就是说拷贝对象和原对象共用同一个内部对象。</p>
+<ul>
+<li><p>通过拷贝构造方法实现浅拷贝：</p>
+</li>
+<li><p>重写 clone() 方法进行浅拷贝：</p>
+<p>Object 类虽然有这个方法，但是这个方法是受保护的（被protected修饰）</p>
+<p>使用 clone 方法的类必须实现 Cloneable 接口，否则会抛出异常 CloneNotSupportedException</p>
+<p><u>在要使用 clone 方法的类中实现 Clonable接口，并重写 clone() 方法，通过 super.clone() 调用Object类中的原 clone 方法</u></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> <span class="keyword">implements</span> <span class="title class_">Cloneable</span> &#123;</span><br><span class="line">    <span class="comment">//引用类型</span></span><br><span class="line">    <span class="keyword">private</span> Subject subject;</span><br><span class="line">    <span class="comment">//基础数据类型</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">clone</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//浅拷贝</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 直接调用父类的clone()方法</span></span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">super</span>.clone();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>深拷贝</strong> ：深拷贝会<strong>完全复制整个对象</strong>，包括这个对象所包含的内部对象。</p>
+<ul>
+<li><p>对于有多层对象的，每个对象都需要实现 Cloneable 并重写  clone() 方法，进而实现了对象的串行层层拷贝。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> <span class="keyword">implements</span> <span class="title class_">Cloneable</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//引用类型</span></span><br><span class="line">    <span class="keyword">private</span> Subject subject;</span><br><span class="line">    <span class="comment">//基础数据类型</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">clone</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//深拷贝</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 直接调用父类的clone()方法</span></span><br><span class="line">            <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> (Student) <span class="built_in">super</span>.clone();</span><br><span class="line">            student.subject = (Subject) subject.clone();</span><br><span class="line">            <span class="keyword">return</span> student;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (CloneNotSupportedException e) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>深拷贝相比于浅拷贝速度较慢并且花销较大。</p>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+  </entry>
 </search>
