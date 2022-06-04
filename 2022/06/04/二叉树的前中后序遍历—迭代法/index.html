@@ -20,28 +20,19 @@
     var CONFIG = {"hostname":"snipercoding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="0. 初衷 平时写文章，经常需要插入图片，免不了需要使用图床工具把本地图片转换成链接。市面上的图床工具非常多，但很多都需要收费，有些免费的也存在着不稳定的风险。">
+  <meta name="description" content="二叉树的前&#x2F;中&#x2F;后序遍历用迭代方式非常容易实现，也较为容易理解，而采用递归方式实现就更为复杂一些。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GitHub+JSDelivr+PicGo+Typora搭建个人图床">
-<meta property="og:url" content="https://snipercoding.github.io/2022/02/10/GitHub+JSDelivr+PicGo+Typora%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A/index.html">
+<meta property="og:title" content="二叉树的前&#x2F;中&#x2F;后序遍历——迭代法">
+<meta property="og:url" content="https://snipercoding.github.io/2022/06/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E4%B8%AD%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E2%80%94%E8%BF%AD%E4%BB%A3%E6%B3%95/index.html">
 <meta property="og:site_name" content="SniperCoding的个人博客">
-<meta property="og:description" content="0. 初衷 平时写文章，经常需要插入图片，免不了需要使用图床工具把本地图片转换成链接。市面上的图床工具非常多，但很多都需要收费，有些免费的也存在着不稳定的风险。">
+<meta property="og:description" content="二叉树的前&#x2F;中&#x2F;后序遍历用迭代方式非常容易实现，也较为容易理解，而采用递归方式实现就更为复杂一些。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164911.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164912.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164913.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164914.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164750.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/20220324164915.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164916.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164917.png">
-<meta property="article:published_time" content="2022-02-10T06:52:38.000Z">
-<meta property="article:modified_time" content="2022-02-10T06:52:38.000Z">
+<meta property="article:published_time" content="2022-06-04T07:33:19.000Z">
+<meta property="article:modified_time" content="2022-06-04T07:33:19.000Z">
 <meta property="article:author" content="SniperCoding">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164911.png">
 
-<link rel="canonical" href="https://snipercoding.github.io/2022/02/10/GitHub+JSDelivr+PicGo+Typora%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A/">
+<link rel="canonical" href="https://snipercoding.github.io/2022/06/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E4%B8%AD%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E2%80%94%E8%BF%AD%E4%BB%A3%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -54,7 +45,7 @@
   };
 </script>
 
-  <title>GitHub+JSDelivr+PicGo+Typora搭建个人图床 | SniperCoding的个人博客</title>
+  <title>二叉树的前/中/后序遍历——迭代法 | SniperCoding的个人博客</title>
   
 
 
@@ -201,7 +192,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://snipercoding.github.io/2022/02/10/GitHub+JSDelivr+PicGo+Typora%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A/">
+    <link itemprop="mainEntityOfPage" href="https://snipercoding.github.io/2022/06/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E4%B8%AD%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E2%80%94%E8%BF%AD%E4%BB%A3%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -214,7 +205,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          GitHub+JSDelivr+PicGo+Typora搭建个人图床
+          二叉树的前/中/后序遍历——迭代法
         </h1>
 
         <div class="post-meta">
@@ -224,7 +215,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-02-10 14:52:38" itemprop="dateCreated datePublished" datetime="2022-02-10T14:52:38+08:00">2022-02-10</time>
+              <time title="创建时间：2022-06-04 15:33:19" itemprop="dateCreated datePublished" datetime="2022-06-04T15:33:19+08:00">2022-06-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,7 +223,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
                 </span>
             </span>
 
@@ -252,8 +243,8 @@
       </span>
       <span class="post-meta-item-text">评论数：</span>
     
-    <a title="valine" href="/2022/02/10/GitHub+JSDelivr+PicGo+Typora%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/02/10/GitHub+JSDelivr+PicGo+Typora%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A/" itemprop="commentCount"></span>
+    <a title="valine" href="/2022/06/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E4%B8%AD%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E2%80%94%E8%BF%AD%E4%BB%A3%E6%B3%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/06/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E4%B8%AD%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E2%80%94%E8%BF%AD%E4%BB%A3%E6%B3%95/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -263,14 +254,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.5k</span>
+              <span>71</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -282,77 +273,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="0-初衷"><a href="#0-初衷" class="headerlink" title="0. 初衷"></a>0. 初衷</h1><blockquote>
-<p>平时写文章，经常需要插入图片，免不了需要使用图床工具把本地图片转换成链接。市面上的图床工具非常多，但很多都需要收费，有些免费的也存在着不稳定的风险。<span id="more"></span>而 GitHub 作为全球最大的“同性交友网站”，不仅稳定性高，而且简单易用，关键还可以免费白嫖！下面教大家如何更好地利用 GitHub 搭建图床。</p>
-</blockquote>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164911.png" alt="image-20220208202732428" style="zoom: 67%;" />
+        <p>二叉树的前&#x2F;中&#x2F;后序遍历用迭代方式非常容易实现，也较为容易理解，而采用递归方式实现就更为复杂一些。</p>
+<span id="more"></span>
 
-<h1 id="1-创建-GitHub-仓库"><a href="#1-创建-GitHub-仓库" class="headerlink" title="1. 创建 GitHub 仓库"></a>1. 创建 GitHub 仓库</h1><p>注册&#x2F;登录自己的 GitHub，创建一个新的名字任意的<strong>公开</strong>仓库。然后上传图片到仓库中，这里我直接使用浏览器端上传的，也可以使用 Git 进行上传。</p>
-<ul>
-<li>在创建的仓库中点击<code>Upload files</code>。</li>
-</ul>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164912.png" alt="image-20210903190649347" style="zoom: 110%;" />
+<p>前序遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">preorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 迭代（根左右）</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Deque&lt;TreeNode&gt; stack = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        stack.push(root);</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">temp</span> <span class="operator">=</span> stack.pop();</span><br><span class="line">            result.add(temp.val);</span><br><span class="line">            <span class="comment">// 栈：先进后出，因此先把右加入，再把左加入</span></span><br><span class="line">            <span class="keyword">if</span>(temp.right!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(temp.right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp.left!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(temp.left);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><p>选择上传的图片，然后提交。</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164913.png" alt="image-20220208204506190" style="zoom: 67%;" />
-</li>
-<li><p>提交之后，就可以在浏览器通过地址<code>https://raw.githubusercontent.com/你的用户名/你的仓库名/main/文件路径</code>来访问所上传的图片。</p>
-<p>比如：<em><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/SniperCoding/pictures1/main/avatar.jpg">https://raw.githubusercontent.com/SniperCoding/pictures1/main/avatar.jpg</a></em></p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164914.png" alt="image-20220208210418418" style="zoom: 67%;" />
-</li>
-<li><p>之后在博客中插入图片的时候，使用此链接即可。</p>
-</li>
-</ul>
-<h1 id="2-使用-jsDelivr-进行-CDN-加速"><a href="#2-使用-jsDelivr-进行-CDN-加速" class="headerlink" title="2. 使用 jsDelivr 进行 CDN 加速"></a>2. 使用 jsDelivr 进行 CDN 加速</h1><p>前面已经利用 GitHub 仓库实现了图床功能，但是大家都知道，GitHub 在国内访问很慢，甚至经常打不开，那么我们的图片就存在加载速度慢的问题，怎么办呢？<strong>jsDelivr</strong> 可以解决此问题，显著提高图片访问的响应速度，并且开源免费！其官网为：<a target="_blank" rel="noopener" href="https://www.jsdelivr.com/">jsDelivr - A free, fast, and reliable CDN for open source</a>。</p>
-<p>使用方法也非常的简单，直接在浏览器通过地址<code>https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名@发布的版本号/文件路径</code>就可以访问 GitHub 上的图片，并且响应速度非常快！其中@发布的版本号可以直接省略，默认加载最新版本，即直接可以简写为<code>https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名/文件路径</code></p>
-<p>比如：<em><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/avatar.jpg">https://cdn.jsdelivr.net/gh/SniperCoding/pictures1/avatar.jpg</a></em></p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164750.png" alt="image-20220208210418418" style="zoom: 67%;" />
+<p>中序遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">inorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 迭代：左根右</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        Deque&lt;TreeNode&gt; stack = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">cur</span> <span class="operator">=</span> root;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty() || cur!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="comment">// 处理左</span></span><br><span class="line">            <span class="keyword">while</span>(cur!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(cur);</span><br><span class="line">                cur = cur.left;</span><br><span class="line">            &#125;</span><br><span class="line">            cur = stack.pop();</span><br><span class="line">            result.add(cur.val);</span><br><span class="line">            <span class="comment">// 处理右</span></span><br><span class="line">            cur = cur.right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="3-使用PicGo上传图片"><a href="#3-使用PicGo上传图片" class="headerlink" title="3. 使用PicGo上传图片"></a>3. 使用PicGo上传图片</h1><p>前面实现了 GitHub 仓库作为图床，jsDelivr 对图片进行加速。但是每次我们都需要使用 Git 工具或者在 GitHub 仓库中进行上传图片，并且要自己拼接图片地址，非常麻烦，有没有更快速更简洁的方式呢？此时神器 <strong>PicGo</strong> 就派上了用场，同样开源免费！</p>
-<p>PicGo 是一个用于快速上传图片并获取图片 URL 链接的工具，支持多个图床进行使用，其中当然包括我们现在使用的 GitHub 图床了，它同时支持 Windows、macOS、Linux平台，详情可见：<a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo">Molunerfinn&#x2F;PicGo: A simple &amp; beautiful tool for pictures uploading built by vue-cli-electron-builder (github.com)</a></p>
-<p>这里以 Windows 为例，说明 PicGo 的使用方法。</p>
-<ul>
-<li><p>下载并安装 PicGo，<a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo/releases/download/v2.2.2/PicGo-Setup-2.2.2.exe">https://github.com/Molunerfinn/PicGo/releases/download/v2.2.2/PicGo-Setup-2.2.2.exe</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/20220324164915.png" alt="image-20210903201908609"></p>
-</li>
-<li><p>打开 PicGo 软件，找到<code>图床设置</code>中的<code>GitHub图床</code>，填写相关信息。</p>
-<ul>
-<li><p><strong>设定仓库名【必填】</strong>：填写<code>你的用户名/你的仓库名</code>，比如我的 SniperCoding&#x2F;pictures1</p>
-</li>
-<li><p><strong>设定分支名【必填】</strong>：填写<code>main</code></p>
-</li>
-<li><p><strong>设定Token【必填】</strong>：在Github主页点击自己头像后，依次选择【Settings】-&gt;【Developer settings】-&gt;【Personal access tokens】-&gt;【Generate new token】，填写Note描述（随便），设置过期时间Expiration为永不过期No expiration，设定勾选【repo】，点击下方的【Generate token】生成一个Token，将Token复制到 PicGo 中。</p>
-</li>
-<li><p>指定存储路径【选填】：可不填。</p>
-</li>
-<li><p><strong>设定自定义域名【选填】</strong>：图片上传后，PicGo 会按照【自定义域名+上传的图片名】的方式生成访问链接，放到剪贴板上，因为我们要使用 jsDeliver 进行加速，因而这里设置为<code>https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名</code>，比如我设置为<strong><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/SniperCoding/pictures1">https://cdn.jsdelivr.net/gh/SniperCoding/pictures1</a></strong></p>
-</li>
-</ul>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164916.png" alt="image-20220208221048599" style="zoom: 67%;" />
-</li>
-<li><p>接着就可以在<code>上传区</code>，将自己的图片上传，甚至可以直接将剪切板的截图上传，上传成功后会直接将相应链接复制到剪切板中，我们就可以直接复制到博客（MarkDown 编辑器）中。</p>
-</li>
-<li><p>在<code>PicGo设置中</code>，可以自定义一些设置，比如上传前重命名、时间戳重命名等，自行设置。</p>
-</li>
-</ul>
-<h1 id="4-Typora-配置-PicGo-上传"><a href="#4-Typora-配置-PicGo-上传" class="headerlink" title="4. Typora 配置 PicGo 上传"></a>4. Typora 配置 PicGo 上传</h1><p>前面使用了 PicGo 工具快速上传图片并获取图片 URL 链接，方便了很多，但是每次都要先在 PicGo 中进行上传，然后将剪切板中链接复制到 MarkDown 编辑器中，有没有更优雅简便的方式，可以将两步合二为一呢？答案是<strong>Typera+PicGo</strong>。</p>
-<p>Typera 是一款轻便简洁的 Markdown 编辑器，可以即时渲染，并且完全免费，推荐大家用此软件进行写作，其官网为：<a target="_blank" rel="noopener" href="https://www.typora.io/">Typora — a markdown editor, markdown reader.</a></p>
-<p>下面介绍 Typora 结合 PicGo 实现上传功能。</p>
-<ul>
-<li><p>下载 Typora，网址<a target="_blank" rel="noopener" href="https://www.typora.io/#windows">Typora — a markdown editor, markdown reader.</a></p>
-</li>
-<li><p>打开 PicGo，在<code>PicGo设置</code>中，点击【设置 Server 】，将监听端口修改为：36677</p>
-</li>
-<li><p>打开 Typera，点击【文件】 -&gt; 【偏好设置】-&gt; 【图像】，然后进行如下配置，其中 PicGo 路径是你的 PicGo 的安装路径。</p>
-<img src="https://cdn.jsdelivr.net/gh/SniperCoding/images_one/个人博客搭建/20220324164917.png" style="zoom: 67%;" />
-
-
-</li>
-<li><p>在 Typera 中书写文章，插入图片（也可以直接将截图复制）时会自动将图片进行上传，并显示在文章中，非常的方便。</p>
-</li>
-</ul>
-<p>以上就是使用 <code>GitHub</code> + <code>jsDelivr</code> + <code>PicGo</code> + <code>TyPora</code> 搭建免费稳定图床的全过程，希望对你有所帮助！</p>
+<p>后序遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">postorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 迭代法思路，先根右左，然后倒序即可</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Deque&lt;TreeNode&gt; stack = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        stack.push(root);</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">temp</span> <span class="operator">=</span> stack.pop();</span><br><span class="line">            result.add(temp.val);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(temp.left!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(temp.left);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp.right!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(temp.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Collections.reverse(result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -375,7 +306,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://snipercoding.github.io/2022/02/10/GitHub+JSDelivr+PicGo+Typora%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A/" title="GitHub+JSDelivr+PicGo+Typora搭建个人图床">https://snipercoding.github.io/2022/02/10/GitHub+JSDelivr+PicGo+Typora搭建个人图床/</a>
+    <a href="https://snipercoding.github.io/2022/06/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E4%B8%AD%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E2%80%94%E8%BF%AD%E4%BB%A3%E6%B3%95/" title="二叉树的前&#x2F;中&#x2F;后序遍历——迭代法">https://snipercoding.github.io/2022/06/04/二叉树的前中后序遍历—迭代法/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -391,10 +322,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2022/02/10/Hexo_Next%E4%B8%BB%E9%A2%98/" rel="next" title="Hexo博客之主题NexT的详细设置">
-      Hexo博客之主题NexT的详细设置 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/03/28/MySQL%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="prev" title="Mysql必备知识点">
+      <i class="fa fa-chevron-left"></i> Mysql必备知识点
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -455,7 +389,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-%E5%88%9D%E8%A1%B7"><span class="nav-text">0. 初衷</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA-GitHub-%E4%BB%93%E5%BA%93"><span class="nav-text">1. 创建 GitHub 仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8-jsDelivr-%E8%BF%9B%E8%A1%8C-CDN-%E5%8A%A0%E9%80%9F"><span class="nav-text">2. 使用 jsDelivr 进行 CDN 加速</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8PicGo%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87"><span class="nav-text">3. 使用PicGo上传图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Typora-%E9%85%8D%E7%BD%AE-PicGo-%E4%B8%8A%E4%BC%A0"><span class="nav-text">4. Typora 配置 PicGo 上传</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
