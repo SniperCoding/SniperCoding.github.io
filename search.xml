@@ -11652,7 +11652,7 @@
       </categories>
   </entry>
   <entry>
-    <title></title>
+    <title>设计模式——模板方法模式</title>
     <url>/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<blockquote>
 <p>定义一个操作中的算法的骨架（算法所需的一些步骤以及步骤执行的顺序），而将一些步骤延迟到子类中，使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。它的主要思想是，定义一个操作的一系列步骤，对于某些暂时确定不下来的步骤，就留给子类去实现好了，这样不同的子类就可以定义出不同的步骤。因此，模板方法的核心在于定义一个“骨架”。</p>
@@ -11710,9 +11710,12 @@
 <p>现在，有了这个抽象类和方法，如果有人想要办理业务，那么只需要继承该<code>AbstractBusinessHandeler</code>并且重写<code>handle</code>方法，然后再使用该实现类的对象调用<code>execute</code>方法，即可完成整个办理业务的流程。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SaveMoneyHandler</span> <span class="keyword">extends</span> <span class="title class_">AbstractBusinessHandeler</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handle</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;save 1000&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String []args)</span>&#123;</span><br><span class="line">        <span class="type">SaveMoneyHandler</span> <span class="variable">saveMoneyHandler</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SaveMoneyHandler</span>();</span><br><span class="line">        saveMoneyHandler.execute();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output:编号：rowNumber-001   save 1000   give a praised</span></span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
   </entry>
   <entry>
-    <title></title>
+    <title>设计模式——享元模式</title>
     <url>/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<blockquote>
 <p><strong>运用共享技术来有效地支持大量细粒度对象的复用</strong>，通过共享已经存在的对象来大幅度减少需要创建的对象数量、避免大量相似类的开销，从而提高系统资源的利用率。一般不变类都会使用享元模式。</p>
@@ -11742,9 +11745,12 @@
 <p>Integer 类使用了享元模式，通过<code>Integer.valueOf()</code>这个静态工厂方法创建<code>Integer</code>实例，当传入的<code>int</code>范围在<code>-128</code>~&#96;+127<code>之间时，会直接返回缓存的</code>Integer&#96;实例（自动装箱时底层会使用 Integer.valueOf()）。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">Integer</span> <span class="keyword">extends</span> <span class="title class_">Number</span> <span class="keyword">implements</span> <span class="title class_">Comparable</span>&lt;Integer&gt; &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title function_">valueOf</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">            <span class="keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];  <span class="comment">// 去缓存中找</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">IntegerCache</span> &#123;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">low</span> <span class="operator">=</span> -<span class="number">128</span>;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> high;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">final</span> Integer cache[];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">static</span> &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">h</span> <span class="operator">=</span> <span class="number">127</span>;</span><br><span class="line">            <span class="type">String</span> <span class="variable">integerCacheHighPropValue</span> <span class="operator">=</span></span><br><span class="line">                sun.misc.VM.getSavedProperty(<span class="string">&quot;java.lang.Integer.IntegerCache.high&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (integerCacheHighPropValue != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> parseInt(integerCacheHighPropValue);</span><br><span class="line">                    i = Math.max(i, <span class="number">127</span>);</span><br><span class="line">                    <span class="comment">// Maximum array size is Integer.MAX_VALUE</span></span><br><span class="line">                    h = Math.min(i, Integer.MAX_VALUE - (-low) -<span class="number">1</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span>( NumberFormatException nfe) &#123;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            high = h;</span><br><span class="line">            cache = <span class="keyword">new</span> <span class="title class_">Integer</span>[(high - low) + <span class="number">1</span>];</span><br><span class="line">            <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> low;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">0</span>; k &lt; cache.length; k++)</span><br><span class="line">                cache[k] = <span class="keyword">new</span> <span class="title class_">Integer</span>(j++);</span><br><span class="line">            <span class="comment">// range [-128, 127] must be interned (JLS7 5.1.7)</span></span><br><span class="line">            <span class="keyword">assert</span> IntegerCache.high &gt;= <span class="number">127</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="title function_">IntegerCache</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
   </entry>
   <entry>
-    <title></title>
+    <title>设计模式——工厂模式</title>
     <url>/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<blockquote>
 <p><strong>工厂模式（Factory Pattern）</strong> 是 Java 中最常用的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。在工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象。</p>
@@ -11799,5 +11805,8 @@
 <p><strong>优点：</strong>当一个产品族中的多个对象被设计成一起工作时，它能保证客户端始终只使用同一个产品族中的对象。</p>
 <p><strong>缺点：</strong>当产品族中需要增加一个新的产品时，所有的工厂类都需要进行修改。</p>
 ]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
   </entry>
 </search>
