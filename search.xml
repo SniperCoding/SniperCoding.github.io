@@ -229,6 +229,183 @@
       </categories>
   </entry>
   <entry>
+    <title>二叉树的前/中/后序遍历——迭代法</title>
+    <url>/2022/06/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E4%B8%AD%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E2%80%94%E8%BF%AD%E4%BB%A3%E6%B3%95/</url>
+    <content><![CDATA[<p>二叉树的前&#x2F;中&#x2F;后序遍历用迭代方式非常容易实现，也较为容易理解，而采用递归方式实现就更为复杂一些。</p>
+<span id="more"></span>
+
+<p>前序遍历</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">preorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 迭代（根左右）</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Deque&lt;TreeNode&gt; stack = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        stack.push(root);</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">temp</span> <span class="operator">=</span> stack.pop();</span><br><span class="line">            result.add(temp.val);</span><br><span class="line">            <span class="comment">// 栈：先进后出，因此先把右加入，再把左加入</span></span><br><span class="line">            <span class="keyword">if</span>(temp.right!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(temp.right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp.left!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(temp.left);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>中序遍历</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">inorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 迭代：左根右</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        Deque&lt;TreeNode&gt; stack = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">cur</span> <span class="operator">=</span> root;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty() || cur!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="comment">// 处理左</span></span><br><span class="line">            <span class="keyword">while</span>(cur!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(cur);</span><br><span class="line">                cur = cur.left;</span><br><span class="line">            &#125;</span><br><span class="line">            cur = stack.pop();</span><br><span class="line">            result.add(cur.val);</span><br><span class="line">            <span class="comment">// 处理右</span></span><br><span class="line">            cur = cur.right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>后序遍历</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">postorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 迭代法思路，先根右左，然后倒序即可</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Deque&lt;TreeNode&gt; stack = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        stack.push(root);</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">temp</span> <span class="operator">=</span> stack.pop();</span><br><span class="line">            result.add(temp.val);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(temp.left!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(temp.left);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp.right!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(temp.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Collections.reverse(result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>设计模式——享元模式</title>
+    <url>/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<blockquote>
+<p><strong>运用共享技术来有效地支持大量细粒度对象的复用</strong>，通过共享已经存在的对象来大幅度减少需要创建的对象数量、避免大量相似类的开销，从而提高系统资源的利用率。一般不变类都会使用享元模式。</p>
+<p>享元模式与单例模式的区别：</p>
+<ul>
+<li>单例模式中一个类只能创建一个对象。</li>
+<li>享元模式中一个类可以创建多个对象，只不过可以采用工厂等方式共享同一个对象，并且可以控制对象创建或使用的数量。比如数据库连接池，不是单例模式示例，而是享元模式示例。</li>
+</ul>
+</blockquote>
+<span id="more"></span>
+
+<p>优点：极大减少内存中相似或相同对象数量，节约系统资源，提供系统性能。</p>
+<p>缺点：需要关注内&#x2F;外部状态，代码更加复杂、如果对象复用度低，则不适用与享元模式。</p>
+<p>核心思想：<u>如果在一个系统中存在多个相同的对象，那么只需要共享一份对象的拷贝，而不必为每一次使用都创建新的对象</u>。在享元模式中，由于需要构造和维护这些可以共享的对象，因此，常会出现一个工厂类，用于维护和创建对象。</p>
+<p>享元模式的主要角色由享元工厂、抽象享元、具体享元类和主函数几部分组成。</p>
+<ul>
+<li><p><code>享元工厂</code>：用于创建具体享元类，维护相同的享元对象。它保证相同的享元对象可以被系统共享。即，其内部使用了类似单例模式的方法，<u>当请求对象已经存在时，直接返回对象，不存在时，在创建对象。</u>享元工厂是享元模式的核心，它需要确保系统可以共享相同的对象。一般情况下，享元工厂会维护一个对象集合，当任何组件尝试获取享元类时，如果请求的享元类已经被创建，则直接返回已有的享元类：若没有，则创建一个新的享元对象，并将它加入到维护队列中。</p>
+</li>
+<li><p><code>抽象享元</code>：定义需要共享的对象业务接口。享元类被创建出来总是为了实现某些特定的业务逻辑，而抽象享元便定义这些逻辑的语义行为。</p>
+</li>
+<li><p><code>具体享元类</code>：实现抽象享元类的接口，完成某一具体逻辑。</p>
+</li>
+<li><p><code>客户端</code>：使用享元模式的组件，通过享元工厂取得享元对象。</p>
+</li>
+</ul>
+<p>享元模式经典的应用场景就是池技术了，String 常量池、数据库连接池、缓冲池等等都是享元模式的应用，享元模式是池技术的重要实现方式</p>
+<p>Integer 类使用了享元模式，通过<code>Integer.valueOf()</code>这个静态工厂方法创建<code>Integer</code>实例，当传入的<code>int</code>范围在<code>-128</code>~&#96;+127<code>之间时，会直接返回缓存的</code>Integer&#96;实例（自动装箱时底层会使用 Integer.valueOf()）。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">Integer</span> <span class="keyword">extends</span> <span class="title class_">Number</span> <span class="keyword">implements</span> <span class="title class_">Comparable</span>&lt;Integer&gt; &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title function_">valueOf</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">            <span class="keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];  <span class="comment">// 去缓存中找</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">IntegerCache</span> &#123;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">low</span> <span class="operator">=</span> -<span class="number">128</span>;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> high;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">final</span> Integer cache[];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">static</span> &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">h</span> <span class="operator">=</span> <span class="number">127</span>;</span><br><span class="line">            <span class="type">String</span> <span class="variable">integerCacheHighPropValue</span> <span class="operator">=</span></span><br><span class="line">                sun.misc.VM.getSavedProperty(<span class="string">&quot;java.lang.Integer.IntegerCache.high&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (integerCacheHighPropValue != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> parseInt(integerCacheHighPropValue);</span><br><span class="line">                    i = Math.max(i, <span class="number">127</span>);</span><br><span class="line">                    <span class="comment">// Maximum array size is Integer.MAX_VALUE</span></span><br><span class="line">                    h = Math.min(i, Integer.MAX_VALUE - (-low) -<span class="number">1</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span>( NumberFormatException nfe) &#123;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            high = h;</span><br><span class="line">            cache = <span class="keyword">new</span> <span class="title class_">Integer</span>[(high - low) + <span class="number">1</span>];</span><br><span class="line">            <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> low;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">0</span>; k &lt; cache.length; k++)</span><br><span class="line">                cache[k] = <span class="keyword">new</span> <span class="title class_">Integer</span>(j++);</span><br><span class="line">            <span class="comment">// range [-128, 127] must be interned (JLS7 5.1.7)</span></span><br><span class="line">            <span class="keyword">assert</span> IntegerCache.high &gt;= <span class="number">127</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="title function_">IntegerCache</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>设计模式——工厂模式</title>
+    <url>/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<blockquote>
+<p><strong>工厂模式（Factory Pattern）</strong> 是 Java 中最常用的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。在工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象。</p>
+<span id="more"></span>
+
+<p>简单来说就是<u>创建一个工厂类，然后当调用者想要创建一个对象时，只需要告诉工厂类即可，由工厂类去创建对象，调用者无需知道是如何创建的，也不用自己去创建。</u></p>
+<p>作用：</p>
+<ul>
+<li>解耦：把对象的创建和使用的过程分开。由于创建过程都由工厂统一管理，所以发生业务逻辑变化（比如类名变了，构造方法变了），不需要找到所有需要创建对象的地方去逐个修正，只需要在工厂里修改即可，降低维护成本。（使用工厂模式 + 配置文件可以更好地解除耦合）</li>
+<li>降低代码重复。如果创建对象的过程都很复杂，需要一定的代码量，而且很多地方都要用到，那么就会有很多的重复代码。我们可以这些创建对象的代码放到工厂里统一管理。既减少了重复代码，也方便以后对对象的创建过程的修改维护。比如要创建一个数据库实例，可以直接使用数据库工厂来获取，而不需要自己去初始化各种参数等信息。</li>
+</ul>
+</blockquote>
+<ul>
+<li><code>简单工厂</code>：美的空调、美的电冰箱、格力空调、格力电冰箱由 1 个工厂类生产，通过参数来创建不同的对象（使用 if else 或者反射）。如果想要增加一个产品（比如海尔空调），需要修改工厂类代码。</li>
+<li><code>工厂方法</code>：美的空调、美的电冰箱、格力空调、格力电冰箱分别由 4 个工厂类生产（每个工厂类中只有一个方法）。如果想要增加一个产品（比如海尔空调），需要增加一个产品类和一个工厂类。</li>
+<li><code>抽象工厂</code>：将产品分族，美的空调、美的电冰箱都属于美的产品，则由美的工厂类生产（此时一个类中有两方法），格力空调、格力电冰箱都属于格力产品，则由格力工厂类生产。如果想要增加一个产品族（比如海尔空调、海尔电冰箱），需要增加一个产品族类和一个工厂类。</li>
+</ul>
+<h3 id="①-简单工厂模式"><a href="#①-简单工厂模式" class="headerlink" title="① 简单工厂模式"></a>① 简单工厂模式</h3><blockquote>
+<p>简单工厂模式不属于 23 中设计模式之一，其仅仅简单的对不同类对象的创建进行了一层薄薄的封装。该模式通过向工厂传递类型来指定要创建的对象。</p>
+</blockquote>
+<p>简单工程模式包含的角色（要素）：</p>
+<ul>
+<li><u>抽象产品</u> ：定义了产品的规范，描述了产品的主要特性和功能。</li>
+<li><u>具体产品</u> ：实现或者继承抽象产品的子类</li>
+<li><u>具体工厂</u> ：提供了创建产品的方法，调用者通过该方法来获取产品。</li>
+</ul>
+<p>优点：封装了创建对象的过程。把对象的创建和业务逻辑层分开，这样以后就避免了修改客户代码（可能有多个客户代码），如果要实现新产品直接修改工厂类，而不需要在原代码中修改，这样就降低了客户代码修改的可能性，更加容易扩展。</p>
+<p>缺点：增加新产品时还是需要修改工厂类的代码，违背了“开闭原则”（即对扩展开放，对修改关闭）。</p>
+<h3 id="②-工厂方法模式"><a href="#②-工厂方法模式" class="headerlink" title="② 工厂方法模式"></a>② 工厂方法模式</h3><blockquote>
+<p>定义一个创建对象的接口，但让实现这个接口的类来决定实例化哪个类。工厂方法让类的实例化推迟到子类中进行。</p>
+</blockquote>
+<p>工厂方法模式包含的角色（要素）：</p>
+<ul>
+<li><u>抽象产品</u>，定义工厂方法所创建的对象的接口，也就是实际需要使用的对象的接口。</li>
+<li><u>具体产品</u>，实现了抽象产品角色所定义的接口，由具体工厂来创建，它同具体工厂之间一一对应。</li>
+<li><u>工厂接口</u>，也可以叫创建器，申明工厂方法，通常返回一个 产品类型的实例对象。</li>
+<li><u>工厂实现</u>，或者叫创建器对象，覆盖工厂接口定义的工厂方法，返回具体的产品实例。</li>
+</ul>
+<p>优点：满足开闭原则。扩展性高，如果想增加一个产品，只要扩展一个工厂类就可以（不需要修改除客户端以外的代码）；屏蔽了产品的具体实现，调用者只需要知道具体工厂的名称就可得到所要的产品，无须知道产品的具体创建过程；。</p>
+<p>缺点：<u>每一个产品都对应一个工厂类</u>。类的个数容易过多，产生类爆炸。</p>
+<h3 id="③-抽象工厂模式"><a href="#③-抽象工厂模式" class="headerlink" title="③ 抽象工厂模式"></a>③ 抽象工厂模式</h3><blockquote>
+<p>工厂方法模式通过引入工厂等级结构，解决了简单工厂模式中工厂类职责太重的问题，但由于工厂方法模式中的每个工厂只生产一类产品，可能会导致系统中存在大量的工厂类，势必会增加系统的开销。此时，我们可以考虑将一些相关的产品组成一个“<strong>产品族</strong>”，由同一个工厂来统一生产，这就是抽象工厂模式的基本思想。</p>
+<p>在抽象工厂模式中，有一个<strong>产品族</strong>的概念：所谓的产品族，是指<strong>位于不同产品等级结构中功能相关联的产品组成的家族</strong>。抽象工厂模式所提供的一系列产品就组成一个产品族；而工厂方法提供的一系列产品称为一个等级结构。</p>
+</blockquote>
+<p>抽象工厂模式包含的角色（要素）：</p>
+<ul>
+<li><u>抽象工厂</u>，用于声明生成抽象产品的方法（可能有多个抽象方法）</li>
+<li><u>具体工厂</u>，实现抽象工厂定义的方法，具体实现一系列产品对象的创建</li>
+<li><u>抽象产品</u>，定义一类产品对象的接口</li>
+<li><u>具体产品</u>，通常在具体工厂里，会选择具体的产品实现，来创建符合抽象工厂定义的方法返回的产品类型的对象。</li>
+</ul>
+<p><strong>优点：</strong>当一个产品族中的多个对象被设计成一起工作时，它能保证客户端始终只使用同一个产品族中的对象。</p>
+<p><strong>缺点：</strong>当产品族中需要增加一个新的产品时，所有的工厂类都需要进行修改。</p>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>设计模式——模板方法模式</title>
+    <url>/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<blockquote>
+<p>定义一个操作中的算法的骨架（算法所需的一些步骤以及步骤执行的顺序），而将一些步骤延迟到子类中，使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。它的主要思想是，定义一个操作的一系列步骤，对于某些暂时确定不下来的步骤，就留给子类去实现好了，这样不同的子类就可以定义出不同的步骤。因此，模板方法的核心在于定义一个“骨架”。</p>
+</blockquote>
+<span id="more"></span>
+
+<p>模板方法的核心思想是：父类（声明为 abstract）定义骨架，子类实现某些细节。</p>
+<p>为了防止子类重写父类的骨架方法，可以在父类中对骨架方法使用<code>final</code>。对于需要子类实现的抽象方法，一般声明为<code>protected</code>，使得这些方法对外部客户端不可见。</p>
+<p>模板方法（Template Method）模式包含以下主要角色：</p>
+<ul>
+<li><p>​    <code>抽象类（Abstract Class）</code>：负责给出一个算法的轮廓和骨架。它由一个模板方法和若干个基本方法构成。</p>
+<ul>
+<li><p>模板方法：定义了算法的骨架，按某种顺序调用其包含的基本方法。</p>
+</li>
+<li><p>基本方法：是实现算法各个步骤的方法，是模板方法的组成部分。基本方法又可以分为三种：</p>
+<ul>
+<li><p>抽象方法（Abstract Method） ：一个抽象方法由抽象类声明、由其具体子类实现。</p>
+</li>
+<li><p>具体方法（Concrete Method）：一个具体方法由一个抽象类或具体类声明并实现，其子类可以进行覆盖也可以直接继承。</p>
+</li>
+<li><p>钩子方法（Hook Method） ：在抽象类中已经实现，包括用于判断的逻辑方法和需要子类重写的空方法两种。一般钩子方法是用于判断的逻辑方法，这类方法名一般为 isXxx，返回值类型为 boolean 类型。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>具体子类（Concrete Class）</code>：实现抽象类中所定义的抽象方法和钩子方法，它们是一个顶级逻辑的组成步骤。</p>
+</li>
+</ul>
+<p><strong>优点：</strong></p>
+<ul>
+<li><p>提高代码复用性：将相同部分的代码放在抽象的父类中，而将不同的代码放入不同的子类中。</p>
+</li>
+<li><p>实现了反向控制：通过一个父类调用其子类的操作，通过对子类的具体实现扩展不同的行为，实现了反向控制 ，并符合“开闭原则”。</p>
+</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>对每个不同的实现都需要定义一个子类，这会导致类的个数增加，系统更加庞大，设计也更加抽象。</li>
+<li>父类中的抽象方法由子类实现，子类执行的结果会影响父类的结果，这导致一种反向的控制结构，它提高了代码阅读的难度。</li>
+</ul>
+<p><strong>适用场景：</strong></p>
+<ul>
+<li>算法的整体步骤很固定，但其中个别部分易变时，这时候可以使用模板方法模式，将容易变的部分抽象出来，供子类实现。</li>
+<li>需要通过子类来决定父类算法中某个步骤是否执行，实现子类对父类的反向控制。</li>
+</ul>
+<p>Java 标准库也有很多模板方法的应用。在集合类中，<code>AbstractList</code> 和 <code>AbstractQueuedSynchronizer</code>都定义了很多通用操作，子类只需要实现某些必要方法。</p>
+<p>比如 AQS</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 骨架方法(模板方法)定义为 final，不被实现</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="type">int</span> <span class="title function_">getState</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> state;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">setState</span><span class="params">(<span class="type">int</span> newState)</span> &#123;</span><br><span class="line">    state = newState;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="type">boolean</span> <span class="title function_">compareAndSetState</span><span class="params">(<span class="type">int</span> expect, <span class="type">int</span> update)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> unsafe.compareAndSwapInt(<span class="built_in">this</span>, stateOffset, expect, update);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">acquire</span><span class="params">(<span class="type">int</span> arg)</span> &#123;  <span class="comment">// 执行的步骤和顺序以定义好，其中某些步骤延迟到子类中实现</span></span><br><span class="line">    <span class="keyword">if</span> (!tryAcquire(arg) &amp;&amp;</span><br><span class="line">        acquireQueued(addWaiter(Node.EXCLUSIVE), arg))</span><br><span class="line">        selfInterrupt();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="type">boolean</span> <span class="title function_">release</span><span class="params">(<span class="type">int</span> arg)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (tryRelease(arg)) &#123;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">h</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">if</span> (h != <span class="literal">null</span> &amp;&amp; h.waitStatus != <span class="number">0</span>)</span><br><span class="line">            unparkSuccessor(h);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ....</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 其他方法由子类去重写</span></span><br><span class="line"><span class="keyword">protected</span> <span class="type">boolean</span> <span class="title function_">tryAcquire</span><span class="params">(<span class="type">int</span> arg)</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">UnsupportedOperationException</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">protected</span> <span class="type">boolean</span> <span class="title function_">tryRelease</span><span class="params">(<span class="type">int</span> arg)</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">UnsupportedOperationException</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<p>去银行的营业厅办理业务需要以下步骤：1.取号、2.办业务、3.评价。三个步骤中取号和评价都是固定的流程，每个人要做的事儿都是一样的。但是办业务这个步骤根据每个人要办的事情不同所以需要有不同的实现。我们可以将整个办业务这件事儿封装成一个抽象类。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">AbstractBusinessHandeler</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 模板方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">()</span>&#123;</span><br><span class="line">        getRowNumber();</span><br><span class="line">        handle();</span><br><span class="line">        judge();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 取号</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">getRowNumber</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;rowNumber-00&quot;</span> + RandomUtils.nextInt());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 办理业务</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">handle</span><span class="params">()</span>; <span class="comment">//抽象的办理业务方法，由子类实现</span></span><br><span class="line">    <span class="comment">// 评价</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">judge</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;give a praised&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在，有了这个抽象类和方法，如果有人想要办理业务，那么只需要继承该<code>AbstractBusinessHandeler</code>并且重写<code>handle</code>方法，然后再使用该实现类的对象调用<code>execute</code>方法，即可完成整个办理业务的流程。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SaveMoneyHandler</span> <span class="keyword">extends</span> <span class="title class_">AbstractBusinessHandeler</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handle</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;save 1000&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String []args)</span>&#123;</span><br><span class="line">        <span class="type">SaveMoneyHandler</span> <span class="variable">saveMoneyHandler</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SaveMoneyHandler</span>();</span><br><span class="line">        saveMoneyHandler.execute();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output:编号：rowNumber-001   save 1000   give a praised</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Hexo博客之主题NexT的详细设置</title>
     <url>/2022/02/10/Hexo_Next%E4%B8%BB%E9%A2%98/</url>
     <content><![CDATA[<h1 id="一-Hexo修改主题"><a href="#一-Hexo修改主题" class="headerlink" title="一. Hexo修改主题"></a>一. Hexo修改主题</h1><blockquote>
@@ -11630,183 +11807,6 @@
 ]]></content>
       <categories>
         <category>Java</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>二叉树的前/中/后序遍历——迭代法</title>
-    <url>/2022/06/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E4%B8%AD%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E2%80%94%E8%BF%AD%E4%BB%A3%E6%B3%95/</url>
-    <content><![CDATA[<p>二叉树的前&#x2F;中&#x2F;后序遍历用迭代方式非常容易实现，也较为容易理解，而采用递归方式实现就更为复杂一些。</p>
-<span id="more"></span>
-
-<p>前序遍历</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">preorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 迭代（根左右）</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Deque&lt;TreeNode&gt; stack = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        stack.push(root);</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">temp</span> <span class="operator">=</span> stack.pop();</span><br><span class="line">            result.add(temp.val);</span><br><span class="line">            <span class="comment">// 栈：先进后出，因此先把右加入，再把左加入</span></span><br><span class="line">            <span class="keyword">if</span>(temp.right!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(temp.right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp.left!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(temp.left);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>中序遍历</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">inorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 迭代：左根右</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        Deque&lt;TreeNode&gt; stack = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">cur</span> <span class="operator">=</span> root;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty() || cur!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="comment">// 处理左</span></span><br><span class="line">            <span class="keyword">while</span>(cur!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(cur);</span><br><span class="line">                cur = cur.left;</span><br><span class="line">            &#125;</span><br><span class="line">            cur = stack.pop();</span><br><span class="line">            result.add(cur.val);</span><br><span class="line">            <span class="comment">// 处理右</span></span><br><span class="line">            cur = cur.right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>后序遍历</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">postorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 迭代法思路，先根右左，然后倒序即可</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Deque&lt;TreeNode&gt; stack = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        stack.push(root);</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">temp</span> <span class="operator">=</span> stack.pop();</span><br><span class="line">            result.add(temp.val);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(temp.left!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(temp.left);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp.right!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(temp.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Collections.reverse(result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>设计模式——模板方法模式</title>
-    <url>/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<blockquote>
-<p>定义一个操作中的算法的骨架（算法所需的一些步骤以及步骤执行的顺序），而将一些步骤延迟到子类中，使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。它的主要思想是，定义一个操作的一系列步骤，对于某些暂时确定不下来的步骤，就留给子类去实现好了，这样不同的子类就可以定义出不同的步骤。因此，模板方法的核心在于定义一个“骨架”。</p>
-</blockquote>
-<span id="more"></span>
-
-<p>模板方法的核心思想是：父类（声明为 abstract）定义骨架，子类实现某些细节。</p>
-<p>为了防止子类重写父类的骨架方法，可以在父类中对骨架方法使用<code>final</code>。对于需要子类实现的抽象方法，一般声明为<code>protected</code>，使得这些方法对外部客户端不可见。</p>
-<p>模板方法（Template Method）模式包含以下主要角色：</p>
-<ul>
-<li><p>​    <code>抽象类（Abstract Class）</code>：负责给出一个算法的轮廓和骨架。它由一个模板方法和若干个基本方法构成。</p>
-<ul>
-<li><p>模板方法：定义了算法的骨架，按某种顺序调用其包含的基本方法。</p>
-</li>
-<li><p>基本方法：是实现算法各个步骤的方法，是模板方法的组成部分。基本方法又可以分为三种：</p>
-<ul>
-<li><p>抽象方法（Abstract Method） ：一个抽象方法由抽象类声明、由其具体子类实现。</p>
-</li>
-<li><p>具体方法（Concrete Method）：一个具体方法由一个抽象类或具体类声明并实现，其子类可以进行覆盖也可以直接继承。</p>
-</li>
-<li><p>钩子方法（Hook Method） ：在抽象类中已经实现，包括用于判断的逻辑方法和需要子类重写的空方法两种。一般钩子方法是用于判断的逻辑方法，这类方法名一般为 isXxx，返回值类型为 boolean 类型。</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>具体子类（Concrete Class）</code>：实现抽象类中所定义的抽象方法和钩子方法，它们是一个顶级逻辑的组成步骤。</p>
-</li>
-</ul>
-<p><strong>优点：</strong></p>
-<ul>
-<li><p>提高代码复用性：将相同部分的代码放在抽象的父类中，而将不同的代码放入不同的子类中。</p>
-</li>
-<li><p>实现了反向控制：通过一个父类调用其子类的操作，通过对子类的具体实现扩展不同的行为，实现了反向控制 ，并符合“开闭原则”。</p>
-</li>
-</ul>
-<p><strong>缺点：</strong></p>
-<ul>
-<li>对每个不同的实现都需要定义一个子类，这会导致类的个数增加，系统更加庞大，设计也更加抽象。</li>
-<li>父类中的抽象方法由子类实现，子类执行的结果会影响父类的结果，这导致一种反向的控制结构，它提高了代码阅读的难度。</li>
-</ul>
-<p><strong>适用场景：</strong></p>
-<ul>
-<li>算法的整体步骤很固定，但其中个别部分易变时，这时候可以使用模板方法模式，将容易变的部分抽象出来，供子类实现。</li>
-<li>需要通过子类来决定父类算法中某个步骤是否执行，实现子类对父类的反向控制。</li>
-</ul>
-<p>Java 标准库也有很多模板方法的应用。在集合类中，<code>AbstractList</code> 和 <code>AbstractQueuedSynchronizer</code>都定义了很多通用操作，子类只需要实现某些必要方法。</p>
-<p>比如 AQS</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 骨架方法(模板方法)定义为 final，不被实现</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="type">int</span> <span class="title function_">getState</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> state;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">setState</span><span class="params">(<span class="type">int</span> newState)</span> &#123;</span><br><span class="line">    state = newState;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="type">boolean</span> <span class="title function_">compareAndSetState</span><span class="params">(<span class="type">int</span> expect, <span class="type">int</span> update)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> unsafe.compareAndSwapInt(<span class="built_in">this</span>, stateOffset, expect, update);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">acquire</span><span class="params">(<span class="type">int</span> arg)</span> &#123;  <span class="comment">// 执行的步骤和顺序以定义好，其中某些步骤延迟到子类中实现</span></span><br><span class="line">    <span class="keyword">if</span> (!tryAcquire(arg) &amp;&amp;</span><br><span class="line">        acquireQueued(addWaiter(Node.EXCLUSIVE), arg))</span><br><span class="line">        selfInterrupt();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="type">boolean</span> <span class="title function_">release</span><span class="params">(<span class="type">int</span> arg)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (tryRelease(arg)) &#123;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">h</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">if</span> (h != <span class="literal">null</span> &amp;&amp; h.waitStatus != <span class="number">0</span>)</span><br><span class="line">            unparkSuccessor(h);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ....</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 其他方法由子类去重写</span></span><br><span class="line"><span class="keyword">protected</span> <span class="type">boolean</span> <span class="title function_">tryAcquire</span><span class="params">(<span class="type">int</span> arg)</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">UnsupportedOperationException</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">protected</span> <span class="type">boolean</span> <span class="title function_">tryRelease</span><span class="params">(<span class="type">int</span> arg)</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">UnsupportedOperationException</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
-
-<p>举例：</p>
-<p>去银行的营业厅办理业务需要以下步骤：1.取号、2.办业务、3.评价。三个步骤中取号和评价都是固定的流程，每个人要做的事儿都是一样的。但是办业务这个步骤根据每个人要办的事情不同所以需要有不同的实现。我们可以将整个办业务这件事儿封装成一个抽象类。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">AbstractBusinessHandeler</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 模板方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">()</span>&#123;</span><br><span class="line">        getRowNumber();</span><br><span class="line">        handle();</span><br><span class="line">        judge();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 取号</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">getRowNumber</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;rowNumber-00&quot;</span> + RandomUtils.nextInt());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 办理业务</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">handle</span><span class="params">()</span>; <span class="comment">//抽象的办理业务方法，由子类实现</span></span><br><span class="line">    <span class="comment">// 评价</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">judge</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;give a praised&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>现在，有了这个抽象类和方法，如果有人想要办理业务，那么只需要继承该<code>AbstractBusinessHandeler</code>并且重写<code>handle</code>方法，然后再使用该实现类的对象调用<code>execute</code>方法，即可完成整个办理业务的流程。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SaveMoneyHandler</span> <span class="keyword">extends</span> <span class="title class_">AbstractBusinessHandeler</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handle</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;save 1000&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String []args)</span>&#123;</span><br><span class="line">        <span class="type">SaveMoneyHandler</span> <span class="variable">saveMoneyHandler</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SaveMoneyHandler</span>();</span><br><span class="line">        saveMoneyHandler.execute();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output:编号：rowNumber-001   save 1000   give a praised</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>设计模式——享元模式</title>
-    <url>/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<blockquote>
-<p><strong>运用共享技术来有效地支持大量细粒度对象的复用</strong>，通过共享已经存在的对象来大幅度减少需要创建的对象数量、避免大量相似类的开销，从而提高系统资源的利用率。一般不变类都会使用享元模式。</p>
-<p>享元模式与单例模式的区别：</p>
-<ul>
-<li>单例模式中一个类只能创建一个对象。</li>
-<li>享元模式中一个类可以创建多个对象，只不过可以采用工厂等方式共享同一个对象，并且可以控制对象创建或使用的数量。比如数据库连接池，不是单例模式示例，而是享元模式示例。</li>
-</ul>
-</blockquote>
-<span id="more"></span>
-
-<p>优点：极大减少内存中相似或相同对象数量，节约系统资源，提供系统性能。</p>
-<p>缺点：需要关注内&#x2F;外部状态，代码更加复杂、如果对象复用度低，则不适用与享元模式。</p>
-<p>核心思想：<u>如果在一个系统中存在多个相同的对象，那么只需要共享一份对象的拷贝，而不必为每一次使用都创建新的对象</u>。在享元模式中，由于需要构造和维护这些可以共享的对象，因此，常会出现一个工厂类，用于维护和创建对象。</p>
-<p>享元模式的主要角色由享元工厂、抽象享元、具体享元类和主函数几部分组成。</p>
-<ul>
-<li><p><code>享元工厂</code>：用于创建具体享元类，维护相同的享元对象。它保证相同的享元对象可以被系统共享。即，其内部使用了类似单例模式的方法，<u>当请求对象已经存在时，直接返回对象，不存在时，在创建对象。</u>享元工厂是享元模式的核心，它需要确保系统可以共享相同的对象。一般情况下，享元工厂会维护一个对象集合，当任何组件尝试获取享元类时，如果请求的享元类已经被创建，则直接返回已有的享元类：若没有，则创建一个新的享元对象，并将它加入到维护队列中。</p>
-</li>
-<li><p><code>抽象享元</code>：定义需要共享的对象业务接口。享元类被创建出来总是为了实现某些特定的业务逻辑，而抽象享元便定义这些逻辑的语义行为。</p>
-</li>
-<li><p><code>具体享元类</code>：实现抽象享元类的接口，完成某一具体逻辑。</p>
-</li>
-<li><p><code>客户端</code>：使用享元模式的组件，通过享元工厂取得享元对象。</p>
-</li>
-</ul>
-<p>享元模式经典的应用场景就是池技术了，String 常量池、数据库连接池、缓冲池等等都是享元模式的应用，享元模式是池技术的重要实现方式</p>
-<p>Integer 类使用了享元模式，通过<code>Integer.valueOf()</code>这个静态工厂方法创建<code>Integer</code>实例，当传入的<code>int</code>范围在<code>-128</code>~&#96;+127<code>之间时，会直接返回缓存的</code>Integer&#96;实例（自动装箱时底层会使用 Integer.valueOf()）。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">Integer</span> <span class="keyword">extends</span> <span class="title class_">Number</span> <span class="keyword">implements</span> <span class="title class_">Comparable</span>&lt;Integer&gt; &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title function_">valueOf</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">            <span class="keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];  <span class="comment">// 去缓存中找</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">IntegerCache</span> &#123;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">low</span> <span class="operator">=</span> -<span class="number">128</span>;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> high;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">final</span> Integer cache[];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">static</span> &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">h</span> <span class="operator">=</span> <span class="number">127</span>;</span><br><span class="line">            <span class="type">String</span> <span class="variable">integerCacheHighPropValue</span> <span class="operator">=</span></span><br><span class="line">                sun.misc.VM.getSavedProperty(<span class="string">&quot;java.lang.Integer.IntegerCache.high&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (integerCacheHighPropValue != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> parseInt(integerCacheHighPropValue);</span><br><span class="line">                    i = Math.max(i, <span class="number">127</span>);</span><br><span class="line">                    <span class="comment">// Maximum array size is Integer.MAX_VALUE</span></span><br><span class="line">                    h = Math.min(i, Integer.MAX_VALUE - (-low) -<span class="number">1</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span>( NumberFormatException nfe) &#123;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            high = h;</span><br><span class="line">            cache = <span class="keyword">new</span> <span class="title class_">Integer</span>[(high - low) + <span class="number">1</span>];</span><br><span class="line">            <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> low;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">0</span>; k &lt; cache.length; k++)</span><br><span class="line">                cache[k] = <span class="keyword">new</span> <span class="title class_">Integer</span>(j++);</span><br><span class="line">            <span class="comment">// range [-128, 127] must be interned (JLS7 5.1.7)</span></span><br><span class="line">            <span class="keyword">assert</span> IntegerCache.high &gt;= <span class="number">127</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="title function_">IntegerCache</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>设计模式——工厂模式</title>
-    <url>/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<blockquote>
-<p><strong>工厂模式（Factory Pattern）</strong> 是 Java 中最常用的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。在工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象。</p>
-<span id="more"></span>
-
-<p>简单来说就是<u>创建一个工厂类，然后当调用者想要创建一个对象时，只需要告诉工厂类即可，由工厂类去创建对象，调用者无需知道是如何创建的，也不用自己去创建。</u></p>
-<p>作用：</p>
-<ul>
-<li>解耦：把对象的创建和使用的过程分开。由于创建过程都由工厂统一管理，所以发生业务逻辑变化（比如类名变了，构造方法变了），不需要找到所有需要创建对象的地方去逐个修正，只需要在工厂里修改即可，降低维护成本。（使用工厂模式 + 配置文件可以更好地解除耦合）</li>
-<li>降低代码重复。如果创建对象的过程都很复杂，需要一定的代码量，而且很多地方都要用到，那么就会有很多的重复代码。我们可以这些创建对象的代码放到工厂里统一管理。既减少了重复代码，也方便以后对对象的创建过程的修改维护。比如要创建一个数据库实例，可以直接使用数据库工厂来获取，而不需要自己去初始化各种参数等信息。</li>
-</ul>
-</blockquote>
-<ul>
-<li><code>简单工厂</code>：美的空调、美的电冰箱、格力空调、格力电冰箱由 1 个工厂类生产，通过参数来创建不同的对象（使用 if else 或者反射）。如果想要增加一个产品（比如海尔空调），需要修改工厂类代码。</li>
-<li><code>工厂方法</code>：美的空调、美的电冰箱、格力空调、格力电冰箱分别由 4 个工厂类生产（每个工厂类中只有一个方法）。如果想要增加一个产品（比如海尔空调），需要增加一个产品类和一个工厂类。</li>
-<li><code>抽象工厂</code>：将产品分族，美的空调、美的电冰箱都属于美的产品，则由美的工厂类生产（此时一个类中有两方法），格力空调、格力电冰箱都属于格力产品，则由格力工厂类生产。如果想要增加一个产品族（比如海尔空调、海尔电冰箱），需要增加一个产品族类和一个工厂类。</li>
-</ul>
-<h3 id="①-简单工厂模式"><a href="#①-简单工厂模式" class="headerlink" title="① 简单工厂模式"></a>① 简单工厂模式</h3><blockquote>
-<p>简单工厂模式不属于 23 中设计模式之一，其仅仅简单的对不同类对象的创建进行了一层薄薄的封装。该模式通过向工厂传递类型来指定要创建的对象。</p>
-</blockquote>
-<p>简单工程模式包含的角色（要素）：</p>
-<ul>
-<li><u>抽象产品</u> ：定义了产品的规范，描述了产品的主要特性和功能。</li>
-<li><u>具体产品</u> ：实现或者继承抽象产品的子类</li>
-<li><u>具体工厂</u> ：提供了创建产品的方法，调用者通过该方法来获取产品。</li>
-</ul>
-<p>优点：封装了创建对象的过程。把对象的创建和业务逻辑层分开，这样以后就避免了修改客户代码（可能有多个客户代码），如果要实现新产品直接修改工厂类，而不需要在原代码中修改，这样就降低了客户代码修改的可能性，更加容易扩展。</p>
-<p>缺点：增加新产品时还是需要修改工厂类的代码，违背了“开闭原则”（即对扩展开放，对修改关闭）。</p>
-<h3 id="②-工厂方法模式"><a href="#②-工厂方法模式" class="headerlink" title="② 工厂方法模式"></a>② 工厂方法模式</h3><blockquote>
-<p>定义一个创建对象的接口，但让实现这个接口的类来决定实例化哪个类。工厂方法让类的实例化推迟到子类中进行。</p>
-</blockquote>
-<p>工厂方法模式包含的角色（要素）：</p>
-<ul>
-<li><u>抽象产品</u>，定义工厂方法所创建的对象的接口，也就是实际需要使用的对象的接口。</li>
-<li><u>具体产品</u>，实现了抽象产品角色所定义的接口，由具体工厂来创建，它同具体工厂之间一一对应。</li>
-<li><u>工厂接口</u>，也可以叫创建器，申明工厂方法，通常返回一个 产品类型的实例对象。</li>
-<li><u>工厂实现</u>，或者叫创建器对象，覆盖工厂接口定义的工厂方法，返回具体的产品实例。</li>
-</ul>
-<p>优点：满足开闭原则。扩展性高，如果想增加一个产品，只要扩展一个工厂类就可以（不需要修改除客户端以外的代码）；屏蔽了产品的具体实现，调用者只需要知道具体工厂的名称就可得到所要的产品，无须知道产品的具体创建过程；。</p>
-<p>缺点：<u>每一个产品都对应一个工厂类</u>。类的个数容易过多，产生类爆炸。</p>
-<h3 id="③-抽象工厂模式"><a href="#③-抽象工厂模式" class="headerlink" title="③ 抽象工厂模式"></a>③ 抽象工厂模式</h3><blockquote>
-<p>工厂方法模式通过引入工厂等级结构，解决了简单工厂模式中工厂类职责太重的问题，但由于工厂方法模式中的每个工厂只生产一类产品，可能会导致系统中存在大量的工厂类，势必会增加系统的开销。此时，我们可以考虑将一些相关的产品组成一个“<strong>产品族</strong>”，由同一个工厂来统一生产，这就是抽象工厂模式的基本思想。</p>
-<p>在抽象工厂模式中，有一个<strong>产品族</strong>的概念：所谓的产品族，是指<strong>位于不同产品等级结构中功能相关联的产品组成的家族</strong>。抽象工厂模式所提供的一系列产品就组成一个产品族；而工厂方法提供的一系列产品称为一个等级结构。</p>
-</blockquote>
-<p>抽象工厂模式包含的角色（要素）：</p>
-<ul>
-<li><u>抽象工厂</u>，用于声明生成抽象产品的方法（可能有多个抽象方法）</li>
-<li><u>具体工厂</u>，实现抽象工厂定义的方法，具体实现一系列产品对象的创建</li>
-<li><u>抽象产品</u>，定义一类产品对象的接口</li>
-<li><u>具体产品</u>，通常在具体工厂里，会选择具体的产品实现，来创建符合抽象工厂定义的方法返回的产品类型的对象。</li>
-</ul>
-<p><strong>优点：</strong>当一个产品族中的多个对象被设计成一起工作时，它能保证客户端始终只使用同一个产品族中的对象。</p>
-<p><strong>缺点：</strong>当产品族中需要增加一个新的产品时，所有的工厂类都需要进行修改。</p>
-]]></content>
-      <categories>
-        <category>设计模式</category>
       </categories>
   </entry>
 </search>
