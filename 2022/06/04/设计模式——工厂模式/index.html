@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"snipercoding.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="二叉树的前&#x2F;中&#x2F;后序遍历用迭代方式非常容易实现，也较为容易理解，而采用递归方式实现就更为复杂一些。">
+  <meta name="description" content="工厂模式（Factory Pattern） 是 Java 中最常用的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。在工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="二叉树的前&#x2F;中&#x2F;后序遍历——迭代法">
-<meta property="og:url" content="https://snipercoding.github.io/2022/06/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E4%B8%AD%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E2%80%94%E8%BF%AD%E4%BB%A3%E6%B3%95/index.html">
+<meta property="og:title" content="SniperCoding的个人博客">
+<meta property="og:url" content="https://snipercoding.github.io/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="SniperCoding的个人博客">
-<meta property="og:description" content="二叉树的前&#x2F;中&#x2F;后序遍历用迭代方式非常容易实现，也较为容易理解，而采用递归方式实现就更为复杂一些。">
+<meta property="og:description" content="工厂模式（Factory Pattern） 是 Java 中最常用的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。在工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-06-04T07:33:19.000Z">
-<meta property="article:modified_time" content="2022-06-04T07:33:19.000Z">
+<meta property="article:published_time" content="2022-06-04T08:08:53.220Z">
+<meta property="article:modified_time" content="2022-06-04T08:09:51.599Z">
 <meta property="article:author" content="SniperCoding">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://snipercoding.github.io/2022/06/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E4%B8%AD%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E2%80%94%E8%BF%AD%E4%BB%A3%E6%B3%95/">
+<link rel="canonical" href="https://snipercoding.github.io/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>二叉树的前/中/后序遍历——迭代法 | SniperCoding的个人博客</title>
+  <title> | SniperCoding的个人博客</title>
   
 
 
@@ -192,7 +192,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://snipercoding.github.io/2022/06/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E4%B8%AD%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E2%80%94%E8%BF%AD%E4%BB%A3%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://snipercoding.github.io/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -205,7 +205,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          二叉树的前/中/后序遍历——迭代法
+          
         </h1>
 
         <div class="post-meta">
@@ -214,17 +214,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-06-04 15:33:19" itemprop="dateCreated datePublished" datetime="2022-06-04T15:33:19+08:00">2022-06-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
+              <time title="创建时间：2022-06-04 16:08:53 / 修改时间：16:09:51" itemprop="dateCreated datePublished" datetime="2022-06-04T16:08:53+08:00">2022-06-04</time>
             </span>
 
           
@@ -243,8 +235,8 @@
       </span>
       <span class="post-meta-item-text">评论数：</span>
     
-    <a title="valine" href="/2022/06/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E4%B8%AD%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E2%80%94%E8%BF%AD%E4%BB%A3%E6%B3%95/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/06/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E4%B8%AD%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E2%80%94%E8%BF%AD%E4%BB%A3%E6%B3%95/" itemprop="commentCount"></span>
+    <a title="valine" href="/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -254,14 +246,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>71</span>
+              <span>1.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -273,17 +265,58 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>二叉树的前&#x2F;中&#x2F;后序遍历用迭代方式非常容易实现，也较为容易理解，而采用递归方式实现就更为复杂一些。</p>
+        <blockquote>
+<p><strong>工厂模式（Factory Pattern）</strong> 是 Java 中最常用的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。在工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象。</p>
 <span id="more"></span>
 
-<p>前序遍历</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">preorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 迭代（根左右）</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Deque&lt;TreeNode&gt; stack = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        stack.push(root);</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">temp</span> <span class="operator">=</span> stack.pop();</span><br><span class="line">            result.add(temp.val);</span><br><span class="line">            <span class="comment">// 栈：先进后出，因此先把右加入，再把左加入</span></span><br><span class="line">            <span class="keyword">if</span>(temp.right!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(temp.right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp.left!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(temp.left);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>中序遍历</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">inorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 迭代：左根右</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        Deque&lt;TreeNode&gt; stack = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">cur</span> <span class="operator">=</span> root;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty() || cur!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="comment">// 处理左</span></span><br><span class="line">            <span class="keyword">while</span>(cur!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(cur);</span><br><span class="line">                cur = cur.left;</span><br><span class="line">            &#125;</span><br><span class="line">            cur = stack.pop();</span><br><span class="line">            result.add(cur.val);</span><br><span class="line">            <span class="comment">// 处理右</span></span><br><span class="line">            cur = cur.right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>后序遍历</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">postorderTraversal</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="comment">// 迭代法思路，先根右左，然后倒序即可</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        Deque&lt;TreeNode&gt; stack = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        stack.push(root);</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">temp</span> <span class="operator">=</span> stack.pop();</span><br><span class="line">            result.add(temp.val);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(temp.left!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(temp.left);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(temp.right!=<span class="literal">null</span>)&#123;</span><br><span class="line">                stack.push(temp.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Collections.reverse(result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简单来说就是<u>创建一个工厂类，然后当调用者想要创建一个对象时，只需要告诉工厂类即可，由工厂类去创建对象，调用者无需知道是如何创建的，也不用自己去创建。</u></p>
+<p>作用：</p>
+<ul>
+<li>解耦：把对象的创建和使用的过程分开。由于创建过程都由工厂统一管理，所以发生业务逻辑变化（比如类名变了，构造方法变了），不需要找到所有需要创建对象的地方去逐个修正，只需要在工厂里修改即可，降低维护成本。（使用工厂模式 + 配置文件可以更好地解除耦合）</li>
+<li>降低代码重复。如果创建对象的过程都很复杂，需要一定的代码量，而且很多地方都要用到，那么就会有很多的重复代码。我们可以这些创建对象的代码放到工厂里统一管理。既减少了重复代码，也方便以后对对象的创建过程的修改维护。比如要创建一个数据库实例，可以直接使用数据库工厂来获取，而不需要自己去初始化各种参数等信息。</li>
+</ul>
+</blockquote>
+<ul>
+<li><code>简单工厂</code>：美的空调、美的电冰箱、格力空调、格力电冰箱由 1 个工厂类生产，通过参数来创建不同的对象（使用 if else 或者反射）。如果想要增加一个产品（比如海尔空调），需要修改工厂类代码。</li>
+<li><code>工厂方法</code>：美的空调、美的电冰箱、格力空调、格力电冰箱分别由 4 个工厂类生产（每个工厂类中只有一个方法）。如果想要增加一个产品（比如海尔空调），需要增加一个产品类和一个工厂类。</li>
+<li><code>抽象工厂</code>：将产品分族，美的空调、美的电冰箱都属于美的产品，则由美的工厂类生产（此时一个类中有两方法），格力空调、格力电冰箱都属于格力产品，则由格力工厂类生产。如果想要增加一个产品族（比如海尔空调、海尔电冰箱），需要增加一个产品族类和一个工厂类。</li>
+</ul>
+<h3 id="①-简单工厂模式"><a href="#①-简单工厂模式" class="headerlink" title="① 简单工厂模式"></a>① 简单工厂模式</h3><blockquote>
+<p>简单工厂模式不属于 23 中设计模式之一，其仅仅简单的对不同类对象的创建进行了一层薄薄的封装。该模式通过向工厂传递类型来指定要创建的对象。</p>
+</blockquote>
+<p>简单工程模式包含的角色（要素）：</p>
+<ul>
+<li><u>抽象产品</u> ：定义了产品的规范，描述了产品的主要特性和功能。</li>
+<li><u>具体产品</u> ：实现或者继承抽象产品的子类</li>
+<li><u>具体工厂</u> ：提供了创建产品的方法，调用者通过该方法来获取产品。</li>
+</ul>
+<p>优点：封装了创建对象的过程。把对象的创建和业务逻辑层分开，这样以后就避免了修改客户代码（可能有多个客户代码），如果要实现新产品直接修改工厂类，而不需要在原代码中修改，这样就降低了客户代码修改的可能性，更加容易扩展。</p>
+<p>缺点：增加新产品时还是需要修改工厂类的代码，违背了“开闭原则”（即对扩展开放，对修改关闭）。</p>
+<h3 id="②-工厂方法模式"><a href="#②-工厂方法模式" class="headerlink" title="② 工厂方法模式"></a>② 工厂方法模式</h3><blockquote>
+<p>定义一个创建对象的接口，但让实现这个接口的类来决定实例化哪个类。工厂方法让类的实例化推迟到子类中进行。</p>
+</blockquote>
+<p>工厂方法模式包含的角色（要素）：</p>
+<ul>
+<li><u>抽象产品</u>，定义工厂方法所创建的对象的接口，也就是实际需要使用的对象的接口。</li>
+<li><u>具体产品</u>，实现了抽象产品角色所定义的接口，由具体工厂来创建，它同具体工厂之间一一对应。</li>
+<li><u>工厂接口</u>，也可以叫创建器，申明工厂方法，通常返回一个 产品类型的实例对象。</li>
+<li><u>工厂实现</u>，或者叫创建器对象，覆盖工厂接口定义的工厂方法，返回具体的产品实例。</li>
+</ul>
+<p>优点：满足开闭原则。扩展性高，如果想增加一个产品，只要扩展一个工厂类就可以（不需要修改除客户端以外的代码）；屏蔽了产品的具体实现，调用者只需要知道具体工厂的名称就可得到所要的产品，无须知道产品的具体创建过程；。</p>
+<p>缺点：<u>每一个产品都对应一个工厂类</u>。类的个数容易过多，产生类爆炸。</p>
+<h3 id="③-抽象工厂模式"><a href="#③-抽象工厂模式" class="headerlink" title="③ 抽象工厂模式"></a>③ 抽象工厂模式</h3><blockquote>
+<p>工厂方法模式通过引入工厂等级结构，解决了简单工厂模式中工厂类职责太重的问题，但由于工厂方法模式中的每个工厂只生产一类产品，可能会导致系统中存在大量的工厂类，势必会增加系统的开销。此时，我们可以考虑将一些相关的产品组成一个“<strong>产品族</strong>”，由同一个工厂来统一生产，这就是抽象工厂模式的基本思想。</p>
+<p>在抽象工厂模式中，有一个<strong>产品族</strong>的概念：所谓的产品族，是指<strong>位于不同产品等级结构中功能相关联的产品组成的家族</strong>。抽象工厂模式所提供的一系列产品就组成一个产品族；而工厂方法提供的一系列产品称为一个等级结构。</p>
+</blockquote>
+<p>抽象工厂模式包含的角色（要素）：</p>
+<ul>
+<li><u>抽象工厂</u>，用于声明生成抽象产品的方法（可能有多个抽象方法）</li>
+<li><u>具体工厂</u>，实现抽象工厂定义的方法，具体实现一系列产品对象的创建</li>
+<li><u>抽象产品</u>，定义一类产品对象的接口</li>
+<li><u>具体产品</u>，通常在具体工厂里，会选择具体的产品实现，来创建符合抽象工厂定义的方法返回的产品类型的对象。</li>
+</ul>
+<p><strong>优点：</strong>当一个产品族中的多个对象被设计成一起工作时，它能保证客户端始终只使用同一个产品族中的对象。</p>
+<p><strong>缺点：</strong>当产品族中需要增加一个新的产品时，所有的工厂类都需要进行修改。</p>
 
     </div>
 
@@ -306,7 +339,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://snipercoding.github.io/2022/06/04/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E4%B8%AD%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E2%80%94%E8%BF%AD%E4%BB%A3%E6%B3%95/" title="二叉树的前&#x2F;中&#x2F;后序遍历——迭代法">https://snipercoding.github.io/2022/06/04/二叉树的前中后序遍历—迭代法/</a>
+    <a href="https://snipercoding.github.io/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" title="">https://snipercoding.github.io/2022/06/04/设计模式——工厂模式/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-Hans" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -323,13 +356,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/03/28/MySQL%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="prev" title="Mysql必备知识点">
-      <i class="fa fa-chevron-left"></i> Mysql必备知识点
+    <a href="/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/" rel="next" title="">
-       <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -389,6 +419,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A0-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="nav-text">① 简单工厂模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A1-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="nav-text">② 工厂方法模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%91%A2-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="nav-text">③ 抽象工厂模式</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
